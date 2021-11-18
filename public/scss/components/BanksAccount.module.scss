@@ -1,0 +1,62 @@
+@import "../base/colors.scss";
+@import "../components/Button.module.scss";
+
+.bank
+{
+  &_information
+  {
+    border-radius: 3px;
+    padding: 10px;
+    text-align: justify;
+    margin: 24px 0px 24px 0px;
+  }
+  &_container
+  {
+    margin-bottom: 24px;
+    border-radius: 5px;
+  }
+  &_header
+  {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $color_blue_light;
+  }
+  &_logoBank {
+    width: 50px;
+    margin-right: 10px;
+  }
+  &_iconCollapse
+  {
+    border: none;
+    background: none;
+  }
+  &_body
+  {
+    padding: 12px;
+  }
+  &_name {
+    color: $color_base_dark_blue;
+    font-weight: bold;
+  }
+  &_infoAccount
+  {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    padding-bottom: 12px;
+  }
+  &_numberSection
+  {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    padding: 12px;
+    background: $color_white;
+  }
+  &_buttonIcon
+  {
+    border: none;
+    background: none;
+  }
+}

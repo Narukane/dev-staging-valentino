@@ -1,0 +1,116 @@
+@import "../base/colors.scss";
+
+.instagramFeed
+{
+  &__title{
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  margin-top: 3rem;
+  &_media
+  {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  &_mediaLink
+  {
+    width: 200px;
+    height: 200px;
+  }
+
+  &_mediaImage
+  {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+
+
+    @media screen and (max-width: 575px) {
+      height: 93px;
+    }
+  }
+
+  &_quickviewBackground
+  {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_quickviewInner
+  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: auto;
+    max-height: 450px;
+    align-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: $color_white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+
+    @media screen and (max-width: 991px) {
+      width: calc(100% - 30px);
+    }
+  }
+
+  &_quickviewButton
+  {
+    font-family: 'Poppins';
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    background: $color_white;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color_gray_text;
+    z-index: 10;
+
+    &:hover
+    {
+      color: $color_black;
+    }
+
+    &:focus,
+    &:active
+    {
+      outline: 0;
+      box-shadow: none;
+    }
+  }
+
+  &_quickviewLink
+  {
+    width: 100%;
+    height: 100%;
+  }
+
+  &_quickviewImage
+  {
+    width: 100%;
+    height: 100%;
+    max-height: 450px;
+    object-fit: cover;
+  }
+}

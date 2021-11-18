@@ -1,0 +1,136 @@
+@import "../base/colors.scss";
+
+.btn {
+  border-radius: 4px;
+  font-family: "Poppins-black";
+  font-size: 13px;
+  border: none;
+
+  &:active,
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+
+  &_forgetPass:disabled {
+    background-color: #E0E0E0 !important;
+    color: $color_white !important;
+  }
+
+  &_share {
+    color: $color_base_dark_blue;
+    font-weight: 600;
+  }
+
+  &_primary {
+    color: $color_white !important;
+    background-color: $color_base_red !important;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color_white !important;
+      background-color: $color_base_red_dark !important;
+    }
+  }
+
+  &_subscribe {
+    color: $color_white !important;
+    background-color: $color_base_red !important;
+    transition: all 0.3s;
+    font-weight: bold;
+    font-family: 'Poppins-regular';
+    padding: 10px;
+
+    &:hover {
+      color: $color_white !important;
+      background-color: $color_base_red_dark !important;
+    }
+  }
+
+  &_secondary {
+    color: $color_base_red !important;
+    border: 1px solid $color_base_red_secondary !important;
+    transition: all 0.3s;
+  }
+
+  &_danger {
+    color: $color_white !important;
+    background-color: $color_red !important;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color_white !important;
+      background-color: $color_red_dark !important;
+    }
+  }
+
+  &_blue {
+    color: $color_base_red !important;
+  }
+
+  &_white {
+    color: $color_base_red !important;
+    background-color: $color_white !important;
+    border: 1px solid $color_base_red !important;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color_base_red_dark !important;
+      background-color: $color_white !important;
+      border: 1px solid $color_base_red_dark !important;
+    }
+  }
+
+  &_black {
+    color: $color_white !important;
+    background-color: $color_black !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color_white;
+      background-color: $color_black;
+    }
+  }
+
+  &_outerBlack {
+    color: $color_black !important;
+    background-color: $color_white !important;
+    border: 1px solid $color_black;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color_white;
+      background-color: $color_black;
+    }
+  }
+
+  &_full_width {
+    width: 100%;
+  }
+
+  &_short {
+    padding: 0.5rem 2rem;
+  }
+
+  &_long {
+    padding: 0.75rem 4rem;
+
+    @media screen and (max-width: 440px) {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &_center {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &_paymentNotif {
+    border: 1px solid $color_blue !important;
+    color: $color_blue !important;
+    background: transparent !important;
+  }
+}

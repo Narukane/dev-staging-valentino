@@ -1,0 +1,194 @@
+@import "../base/colors.scss";
+@import "../components/Placeholder.module.scss";
+@import "../components/Button.module.scss";
+
+.widgetFooter {
+  background: #e0e0e0;
+  padding: 35px 0;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 11px;
+    font-family: "Poppins-black";
+    margin-bottom: 13px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      list-style: none;
+      margin-bottom: 11px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.newsletter {
+  display: flex wrap;
+  justify-content: flex-start;
+
+  @media screen and (max-width: 1024px) {
+    display: block;
+  }
+
+  &_label {
+    display: none;
+  }
+
+  &_input {
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 10px;
+
+    &::placeholder {
+      color: $color_gray_semi_dark;
+    }
+
+    &:focus {
+      outline: 0;
+      border: none;
+    }
+
+    @media screen and (max-width: 1024px) {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.socialIcon {
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &_item {
+    margin: 0 15px;
+
+    & > img {
+      fill: $color_base_red;
+      height: 17px;
+    }
+  }
+}
+
+.footer {
+  background: $color_white;
+
+  &_line {
+    border-top: 1px solid $color_divider;
+  }
+
+  &__widget {
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: none;
+      margin-bottom: 23px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  &__widgetInfo {
+    margin-bottom: 1.5rem;
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: none;
+      margin-bottom: 23px;
+    }
+
+    img {
+      height: 35px;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+      font-size: 14px;
+    }
+  }
+
+  &__widgetLinks {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.5rem;
+
+        a {
+          text-decoration: none;
+          font-size: 14px;
+          color: #000000;
+        }
+      }
+    }
+  }
+
+  &_bottom {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem 0;
+
+    & > a {
+      color: $color_white;
+    }
+
+    & img,
+    video,
+    iframe {
+      display: none !important;
+    }
+
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      text-align: center !important;
+      font-size: 13px !important;
+      margin-bottom: 0 !important;
+    }
+  }
+
+  &_bottomWidget {
+    text-align: center;
+    font-size: 11px;
+
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      text-align: center;
+      font-size: 11px;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@import "../base/colors.scss";
+
+.breadcrumbs {
+  padding-bottom: 1rem;
+  white-space: nowrap;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  &_line {
+    display: block;
+    width: 10%;
+    border-top: 1px solid $color_black;
+    align-self: center;
+    margin-right: 2rem;
+  }
+
+  &_class {
+    position: relative;
+    font-family: "Poppins-medium";
+    font-size: 14px;
+    letter-spacing: 0.75px;
+    color: #262626;
+    margin-right: 2rem;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &_number {
+      position: absolute;
+      left: 0;
+      width: 19px;
+      height: 19px;
+      line-height: 19px;
+      text-align: center;
+      color: white;
+      background: $color_gray_semi_dark;
+      border-radius: 50%;
+    }
+
+    &_label {
+      margin-left: 0;
+    }
+  }
+
+  &_activeClass {
+    color: $color_base_red;
+    font-weight: bold;
+  }
+
+  &_activeNumber {
+    background: $color_blue;
+  }
+}
