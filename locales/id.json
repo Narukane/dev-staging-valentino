@@ -1,6 +1,7 @@
 {
   "account": {
     "accountDetails": "Detail Akun",
+    "title": "Akun",
     "back": "Kembali ke akun saya",
     "billingAddress": "Alamat Penagihan",
     "changePassword": "Ganti kata sandi",
@@ -75,6 +76,7 @@
     "leaveReply": "Tinggalkan Balasan",
     "postComment": "Kirimkan Komentar",
     "recentPost": "Postingan Terbaru",
+    "readMore" : "Lanjut baca",
     "title": "Blog"
   },
   "cart": {

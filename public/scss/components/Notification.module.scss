@@ -5,15 +5,16 @@
   &_desc
   {
     margin-bottom: 25px;
+    background-color: rgba(224, 224, 224, 0.5);
+    padding: 1rem;
+    border-radius: 3px;
+    font-size: 12px;
   }
 
   &_mediaContainer
   {
-    width: 400px;
+    width: 100%;
 
-    @media screen and (max-width: 575px) {
-      width: 100%;
-    }
   }
 
   &_media
@@ -87,7 +88,7 @@
 
     &:checked + .notification_mediaCheckboxSlider
     {
-      background-color: $color_blue;
+      background-color: #4ECB71;
     }
 
     &:checked + .notification_mediaCheckboxSlider:before
@@ -97,7 +98,7 @@
 
     &:disabled + .notification_mediaCheckboxSlider
     {
-      background-color: rgba($color_blue, 0.5);
+      background-color: rgba(#4ECB71, 0.5);
     }
   }
 
@@ -134,7 +135,7 @@
     align-items: center;
     margin: 12px 0 0;
     padding: 20px 12px;
-    background: $color_blue_light;
+    background: rgba(#E0E0E0, 0.4);
     border-radius: 4px;
   }
 
@@ -179,7 +180,7 @@
 
     &:disabled ~ .notification_mediaDetailCheckboxLabel
     {
-      background-color: $color_blue_low;
+      background-color: $color_base_red;
     }
   }
 

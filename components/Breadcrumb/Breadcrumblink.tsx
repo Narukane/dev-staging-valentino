@@ -36,7 +36,7 @@ const Breadcrumblink: FC<any> = ({
               }
               return (
                 <li className={`${styles.breadcrumb_item} ${styles.breadcrumb_valentino_item}`} key={idx}>
-                  <a className={styles.breadcrumb_valentino_item__link}>{el}</a>
+                  <a className={`${styles.breadcrumb_valentino_item__link} ${links.length - 1 == idx && styles.breadcrumb_valentino_item__linkBold}`}>{el}</a>
                 </li>
               )
             })

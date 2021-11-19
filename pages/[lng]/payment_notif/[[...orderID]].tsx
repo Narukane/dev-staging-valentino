@@ -124,7 +124,6 @@ const PaymentConfirmationPage: FC<any> = ({
                 </div>
                 :
                 <>
-                  <BankAccount />
                   <CheckPaymentOrder
                     classes={classesCheckPaymentOrder}
                     icon={{

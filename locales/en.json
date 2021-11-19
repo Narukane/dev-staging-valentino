@@ -1,6 +1,7 @@
 {
   "account": {
     "accountDetails": "Account Details",
+    "title": "Profile",
     "back": "Back to my account",
     "billingAddress": "Billing Address",
     "cancelled": "Cancelled",
@@ -75,6 +76,7 @@
     "leaveReply": "Leave a reply",
     "postComment": "Post a comment",
     "recentPost": "Recent Post",
+    "readMore" : "View more",
     "title": "Blogs"
   },
   "cart": {

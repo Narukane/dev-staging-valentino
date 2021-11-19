@@ -1,10 +1,6 @@
 import { FC, useState } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import {
-  Account,
-  useI18n,
-  useLogout
-} from "@sirclo/nexus";
+import { Account, useI18n, useLogout } from "@sirclo/nexus";
 import { toast } from "react-toastify";
 import SEO from "components/SEO";
 import Layout from "components/Layout/Layout";
@@ -22,12 +18,13 @@ import {
   Crosshair,
   ChevronDown,
   Mail,
-  ChevronUp
+  ChevronUp,
 } from "react-feather";
 import styles from "public/scss/pages/Account.module.scss";
 import stylesPopupConfirmationOrder from "public/scss/components/popupConfirmationOrder.module.scss";
 import stylesPopupCheckPaymentOrder from "public/scss/components/CheckPaymentOrder.module.scss";
 import stylesNotif from "public/scss/components/Notification.module.scss";
+import Breadcrumblink from "components/Breadcrumb/Breadcrumblink";
 
 const ACTIVE_CURRENCY = "IDR";
 
@@ -43,16 +40,19 @@ const classesAccount = {
   myAccountContentClassName: styles.account_myAccount,
   myAccountBodyClassName: styles.account_myAccount_order,
   myAccountFieldClassName: styles.account_myAccount_order__list,
+  myAccountLabelClassName: `${styles.account_myAccount_order__listLabel} d-md-flex`,
+  myAccountValueClassName: `${styles.account_myAccount_order__listValue} d-md-flex`,
   loyaltyPointContainerClassName: styles.account_loyalty,
   /* order history classes */
   orderHistoryContainerClassName: styles.table_orderhistory,
   tableClassName: styles.table_history,
   orderedItemDetailNeedReviewClassName: styles.table_itemDetailNeedReview,
   orderedItemDetailDeliveredClassName: styles.table_orderedItemDetailDelivered,
-  orderedItemDetailUploadReceiptClassName: styles.table_orderedItemDetailUploadReceipt,
+  orderedItemDetailUploadReceiptClassName:
+    styles.table_orderedItemDetailUploadReceipt,
   /* change password clases */
   editAccountClassName: styles.account_edit,
-  inputContainerClassName: `${styles.sirclo_form_row} d-md-flex align-items-center`,
+  inputContainerClassName: `${styles.sirclo_form_row} align-items-center`,
   inputLabelClassName: styles.account_edit__label,
   inputClassName: `form-control ${styles.sirclo_form_input} ${styles.size_label}`,
   changePasswordClassName: styles.account_changePassword,
@@ -113,31 +113,47 @@ const classesAccount = {
   datePickerInputClassName: "date-picker__input",
   datePickerCalendarClassName: "date-picker__calendar",
   //popupConfirmationOrder
-  popupConfirmationOrderContainerClassName: stylesPopupConfirmationOrder.container,
+  popupConfirmationOrderContainerClassName:
+    stylesPopupConfirmationOrder.container,
   popupConfirmationOrderContentClassName: stylesPopupConfirmationOrder.content,
   popupConfirmationOrderTitleClassName: stylesPopupConfirmationOrder.title,
   popupConfirmationOrderNoteClassName: stylesPopupConfirmationOrder.note,
-  popupConfirmationOrderDescriptionClassName: stylesPopupConfirmationOrder.description,
-  popupConfirmationOrderWrapButtonClassName: stylesPopupConfirmationOrder.wrapButton,
-  popupConfirmationOrderButtonConfirmClassName: stylesPopupConfirmationOrder.buttonNo,
-  popupConfirmationOrderButtonNoClassName: stylesPopupConfirmationOrder.buttonConfirm,
+  popupConfirmationOrderDescriptionClassName:
+    stylesPopupConfirmationOrder.description,
+  popupConfirmationOrderWrapButtonClassName:
+    stylesPopupConfirmationOrder.wrapButton,
+  popupConfirmationOrderButtonConfirmClassName:
+    stylesPopupConfirmationOrder.buttonNo,
+  popupConfirmationOrderButtonNoClassName:
+    stylesPopupConfirmationOrder.buttonConfirm,
   //order history info
   orderInfoContainerClassName: styles.membership_info_container,
   OrderInfoIconClassName: styles.membership_info_icon,
   orderInfoLabelClassName: styles.membership_info_label,
   OrderInfoSearchHereClassName: styles.membership_info_button,
   //popupCheckPaymentOrder
-  checkPaymentOrderContainerClassName: stylesPopupCheckPaymentOrder.checkOrder_overlay,
-  checkPaymentOrderContainerBodyClassName: stylesPopupCheckPaymentOrder.checkOrder_container,
-  checkPaymentOrderHeaderClassName: stylesPopupCheckPaymentOrder.checkOrder_header,
-  checkPaymentOrderTitleClassName: stylesPopupCheckPaymentOrder.checkOrder_title,
-  checkPaymentOrderDescriptionClassName: stylesPopupCheckPaymentOrder.checkOrder_description,
-  checkPaymentOrderContentClassName: stylesPopupCheckPaymentOrder.checkOrder_content,
-  checkPaymentOrderInputContentClassName: stylesPopupCheckPaymentOrder.checkOrder_inputContent,
-  checkPaymentOrderInputTitleClassName: stylesPopupCheckPaymentOrder.checkOrder_inputTitle,
-  checkPaymentOrderInputClassName: stylesPopupCheckPaymentOrder.checkOrder_input,
-  checkPaymentOrderCloseButtonClassName: stylesPopupCheckPaymentOrder.checkOrder_closeButton,
-  checkPaymentOrderSubmitButtonClassName: stylesPopupCheckPaymentOrder.checkOrder_submitButton,
+  checkPaymentOrderContainerClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_overlay,
+  checkPaymentOrderContainerBodyClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_container,
+  checkPaymentOrderHeaderClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_header,
+  checkPaymentOrderTitleClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_title,
+  checkPaymentOrderDescriptionClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_description,
+  checkPaymentOrderContentClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_content,
+  checkPaymentOrderInputContentClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_inputContent,
+  checkPaymentOrderInputTitleClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_inputTitle,
+  checkPaymentOrderInputClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_input,
+  checkPaymentOrderCloseButtonClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_closeButton,
+  checkPaymentOrderSubmitButtonClassName:
+    stylesPopupCheckPaymentOrder.checkOrder_submitButton,
   /* setting notification */
   settingNotifContainer: stylesNotif.notification,
   settingNotifHeader: "d-none",
@@ -154,12 +170,13 @@ const classesAccount = {
   mediaCheckboxSlider: stylesNotif.notification_mediaCheckboxSlider,
   mediaDetailContainer: stylesNotif.notification_mediaDetailContainer,
   mediaDetailLabel: stylesNotif.notification_mediaDetailLabel,
-  mediaDetailCheckboxContainer: stylesNotif.notification_mediaDetailCheckboxContainer,
+  mediaDetailCheckboxContainer:
+    stylesNotif.notification_mediaDetailCheckboxContainer,
   mediaDetailCheckbox: stylesNotif.notification_mediaDetailCheckbox,
   mediaDetailCheckboxLabel: stylesNotif.notification_mediaDetailCheckboxLabel,
 
-  //Table 
-  tableDetailContainerClassName:styles.table_detail_container,
+  //Table
+  tableDetailContainerClassName: styles.table_detail_container,
   tableDetailInfoSectionClassName: styles.table_detail_info_section,
   tableDetailInfoItemClassName: styles.table_detail_info_item,
   tableDetailPriceLineClassName: styles.table_detail_price_line,
@@ -191,16 +208,16 @@ const orderHistoryPaginationClasses = {
   pagingClassName: styles.pagination,
   activeClassName: styles.pagination_active,
   itemClassName: styles.pagination_item,
-}
+};
 
 const AccountsPage: FC<any> = ({
   lng,
   lngDict,
   hasOtp,
-  brand
+  brand,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n();
-  const logout = useLogout('login');
+  const logout = useLogout("login");
 
   const [name, setName] = useState<string>("");
 
@@ -209,7 +226,11 @@ const AccountsPage: FC<any> = ({
 
   const onSuccess = (msg: string, data: any) => {
     if (data) {
-      setName(data?.upsertProfile[0]?.firstName + " " + data?.upsertProfile[0]?.lastName);
+      setName(
+        data?.upsertProfile[0]?.firstName +
+          " " +
+          data?.upsertProfile[0]?.lastName
+      );
     }
     toast.success(msg);
   };
@@ -218,24 +239,22 @@ const AccountsPage: FC<any> = ({
     const { firstName, lastName } = data?.members[0];
     setName(`${firstName} ${lastName}`);
   };
+  const linksBreadcrumb = [
+    `${i18n.t("home.title")}`,
+    `${i18n.t("account.title")}`,
+  ];
 
   return (
-    <Layout
-      i18n={i18n}
-      lng={lng}
-      lngDict={lngDict}
-      brand={brand}
-    >
+    <Layout i18n={i18n} lng={lng} lngDict={lngDict} brand={brand}>
       <SEO title={i18n.t("account.myAccount")} />
+      <Breadcrumblink links={linksBreadcrumb} lng={lng} />
       <div className="container">
         <div className={styles.account_profile}>
           <h2 className={styles.account_profile_title}>
-            {i18n.t("account.hallo")}{", "}
+            {i18n.t("account.hallo")}
+            {", "}
             <span>{name || "Guys"}</span>
-            <span
-              className={styles.account_profile__logout}
-              onClick={logout}
-            >
+            <span className={styles.account_profile__logout} onClick={logout}>
               <LogOut color="red" />
             </span>
           </h2>
@@ -254,8 +273,12 @@ const AccountsPage: FC<any> = ({
           showSettingNotification={hasOtp}
           passwordViewIcon={<Eye />}
           passwordHideIcon={<EyeOff />}
-          passwordFulfilledCriteriaIcon={<CheckCircle color="green" size={16} />}
-          passwordUnfulfilledCriteriaIcon={<CheckCircle color="gray" size={16} />}
+          passwordFulfilledCriteriaIcon={
+            <CheckCircle color="green" size={16} />
+          }
+          passwordUnfulfilledCriteriaIcon={
+            <CheckCircle color="gray" size={16} />
+          }
           mapButtonCloseIcon={<XIcon />}
           mapCenterIcon={<Crosshair />}
           membershipPaginationClasses={orderHistoryPaginationClasses}
@@ -263,30 +286,36 @@ const AccountsPage: FC<any> = ({
             accordionIcon: <ChevronDown size={20} color="#2296CB" />,
             closeIcon: <XIcon />,
             infoIcon: <AlertCircle />,
-            chevronDownIcon: <ChevronDown/>,
-            chevronUpIcon: <ChevronUp/>,
+            chevronDownIcon: <ChevronDown />,
+            chevronUpIcon: <ChevronUp />,
             loadingIcon: <Loader color="text-light" />,
             email: <Mail />,
             whatsApp: <img src="/images/wa.svg" alt="whatsapp" />,
             line: <img src="/images/line.svg" alt="line" />,
-            iconTracker: <img src="/images/motorcycle.svg" alt="motorcycle" />
+            iconTracker: <img src="/images/motorcycle.svg" alt="motorcycle" />,
           }}
         />
       </div>
     </Layout>
   );
-}
+};
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   res,
-  params
+  params,
 }) => {
   const brand = await useBrand(req);
   const cookies = parseCookies(req);
-  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || cookies.ACTIVE_LNG || 'id';
+  const defaultLanguage =
+    brand?.settings?.defaultLanguage ||
+    params.lng ||
+    cookies.ACTIVE_LNG ||
+    "id";
   const hasOtp = await useWhatsAppOTPSetting(req);
-  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
+  const { default: lngDict = {} } = await import(
+    `locales/${defaultLanguage}.json`
+  );
 
   if (res) {
     const auth = cookies.AUTH_KEY;
@@ -304,9 +333,9 @@ export const getServerSideProps: GetServerSideProps = async ({
       lng: defaultLanguage,
       lngDict,
       hasOtp,
-      brand: brand || ""
-    }
+      brand: brand || "",
+    },
   };
-}
+};
 
 export default AccountsPage;

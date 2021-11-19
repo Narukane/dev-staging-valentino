@@ -13,23 +13,26 @@ import useWindowSize from "lib/useWindowSize";
 import { useBrand } from "lib/useBrand";
 import Layout from "components/Layout/Layout";
 import { GRAPHQL_URI } from "components/Constants";
+import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
 import styles from "public/scss/pages/Blog.module.scss";
 
 const EmptyComponent = dynamic(() => import("components/EmptyComponent/EmptyComponent"));
 const Placeholder = dynamic(() => import("components/Placeholder"));
 
 const classesBlogs = {
-  blogsContainerClassName: styles.blog,
-  blogContainerClassName: styles.blog_item,
+  blogsContainerClassName: `row ${styles.blog}`,
+  blogContainerClassName: `col-12 col-md-12 ${styles.blog_item} row`,
   categoryClassName: styles.blog_itemCategory,
-  imageContainerClassName: styles.blog_itemImageContainer,
+  imageContainerClassName: `${styles.blog_itemImageContainer} col-12 col-md-4 `,
   imageClassName: styles.blog_itemImage,
-  descriptionClassName: styles.blog_itemContent,
+  descriptionClassName: `col-12 col-md-8 ${styles.blog_itemContent}`,
   titleClassName: styles.blog_itemTitle,
   authorClassName: styles.blog_itemAuthor,
   descriptionInnerFooterClassName: styles.blog_itemInnerFooter,
   dateClassName: styles.blog_itemInnerFooterDate,
-  authorPicClassName: "d-none"
+  authorPicClassName: "d-none",
+  contentContainerClassName: styles.blog_contentContainer,
+  buttonClassName: styles.blog_button
 }
 
 const classesBlogCategories = {
@@ -44,7 +47,7 @@ const classesEmptyComponent = {
 };
 
 const classesPagination = {
-  pagingClassName: styles.pagination,
+  pagingClassName: `col-12 ${styles.pagination}`,
   activeClassName: styles.pagination_active,
   itemClassName: styles.pagination_item
 }
@@ -72,7 +75,9 @@ const Blog: FC<any> = ({
   const size = useWindowSize();
 
   const [totalCategories, setTotalCategories] = useState(null);
-  const BlogAllowed = isBlogAllowed();
+  const allowedBlog = isBlogAllowed();
+
+  const linksBreadcrumb = [`${i18n.t("home.title")}`, `${i18n.t("blog.title")}`]
 
   return (
     <Layout
@@ -80,11 +85,14 @@ const Blog: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
-      withAllowed={BlogAllowed}
     >
-      <div className="container">
-        <div className="row">
-          <div className="col-12 col-sm-8 offset-sm2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      {allowedBlog &&
+        <>
+          <Breadcrumb
+            links={linksBreadcrumb}
+            lng={lng}
+          />
+          <div className="container">
             <div
               className={`${styles.blog_headerContainer} ${!headerImage && styles.blog_headerWithoutBackground}`}
               style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${headerImage})` }}
@@ -93,64 +101,73 @@ const Blog: FC<any> = ({
                 {i18n.t("blog.title")}
               </h1>
             </div>
-            <Blogs
-              classes={classesBlogs}
-              paginationClasses={classesPagination}
-              withPagination
-              itemPerPage={4}
-              thumborSetting={{
-                width: size.width < 768 ? 375 : 512,
-                format: "webp",
-                quality: 85,
-              }}
-              LoadingComponent={
-                <>
-                  <Placeholder classes={classesPlaceholderBlogs} withImage />
-                  <Placeholder classes={classesPlaceholderBlogs} withImage />
-                  <Placeholder classes={classesPlaceholderBlogs} withImage />
-                </>
-              }
-              emptyStateComponent={
-                <EmptyComponent
-                  classes={classesEmptyComponent}
-                  title={i18n.t("blog.isEmpty")}
+            <br></br>
+            <div className="row">
+              <div className="col-12 col-lg-9">
+                <Blogs
+                  classes={classesBlogs}
+                  paginationClasses={classesPagination}
+                  withPagination
+                  withAuthor
+                  itemPerPage={4}
+                  withReadMoreButton
+                  thumborSetting={{
+                    width: size.width < 768 ? 375 : 512,
+                    format: "webp",
+                    quality: 85,
+                  }}
+                  LoadingComponent={
+                    <div className="row">
+                      <div className="col-12 col-md-6">
+                        <Placeholder classes={classesPlaceholderBlogs} withImage />
+                      </div>
+                      <div className="col-12 col-md-6">
+                        <Placeholder classes={classesPlaceholderBlogs} withImage />
+                      </div>
+                    </div>
+                  }
+                  emptyStateComponent={
+                    <EmptyComponent
+                      classes={classesEmptyComponent}
+                      title={i18n.t("blog.isEmpty")}
+                    />
+                  }
                 />
-              }
-            />
-            {(totalCategories > 0 || totalCategories === null) &&
-              <>
-                <h2 className={styles.blog_titleSide}>
-                  {i18n.t("blog.categories")}
-                </h2>
-                <BlogCategories
-                  classes={classesBlogCategories}
-                  getCategoriesCount={(categoriesCount) => setTotalCategories(categoriesCount)}
-                />
-              </>
-            }
-            <h2 className={styles.blog_titleSide}>
-              {i18n.t("blog.recentPost")}
-            </h2>
-            <BlogRecent
-              classes={classesBlogRecent}
-              limit={5}
-              linkPrefix="blog"
-              thumborSetting={{
-                width: 100,
-                format: "webp",
-                quality: 85
-              }}
-              loadingComponent={
-                <>
-                  <Placeholder classes={classesPlaceholderBlogs} withImage />
-                  <Placeholder classes={classesPlaceholderBlogs} withImage />
-                  <Placeholder classes={classesPlaceholderBlogs} withImage />
-                </>
-              }
-            />
+              </div>
+              <div className="col-12 col-lg-3">
+                <div className="row">
+                  <div className="col-12 col-md-6 col-lg-12">
+                    {(totalCategories > 0 || totalCategories === null) &&
+                      <>
+                        <h1 className={styles.title_side_blogs}>
+                          {i18n.t("blog.categories")}
+                        </h1>
+                        <BlogCategories
+                          classes={classesBlogCategories}
+                          getCategoriesCount={(categoriesCount) => setTotalCategories(categoriesCount)}
+                        />
+                      </>
+                    }
+                  </div>
+                  <div className="col-12 col-md-6 col-lg-12">
+                    <h2 className={styles.title_side_blogs}>{i18n.t("blog.recentPost")}</h2>
+                    <BlogRecent
+                      classes={classesBlogRecent}
+                      limit={5}
+                      linkPrefix="blog"
+                      thumborSetting={{
+                        width: 100,
+                        format: "webp",
+                        quality: 85
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      }
     </Layout>
   );
 };

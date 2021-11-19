@@ -441,7 +441,7 @@ const PlaceOrderPage: FC<any> = ({
                             page: "place_order",
                             currency: "IDR",
                             submitButtonLabel: i18n.t(
-                              "orderSummary.placeOrder"
+                              "orderSummary.toShipping"
                             ),
                             continueShoppingRoute: "products",
                             onErrorMsg: (msg) => toast.error(msg),

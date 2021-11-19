@@ -4,74 +4,62 @@
 @import "../components/Password.module.scss";
 @import "./Track.module.scss";
 
-.table
-{
-  &_status
-  {
+.table {
+  &_status {
     width: max-content;
     padding: 5px 16px;
     border-radius: 18px;
     color: $color_white;
-    &_cancelled
-    {
+    &_cancelled {
       color: $color_cancelled;
     }
   }
-  &_detail
-  {
-    &_title
-    {
-      span
-      {
+  &_detail {
+    &_title {
+      span {
         display: flex;
         color: $color_gray_semi_dark;
       }
     }
-    &_buttonInvoice
-    {
+    &_buttonInvoice {
       display: flex;
-      color: $color_blue !important;
+      color: #E89F71 !important;
       padding: 6px 0px;
       border: none;
       background: none;
       align-items: center;
     }
 
-    &_buttonUpload
-      {
-        @extend .btn_primary;
-        position: relative;
-        display: inline-block;
+    &_buttonUpload {
+      @extend .btn_primary;
+      position: relative;
+      display: inline-block;
 
-        label {
-          padding: 8px 12px;
-          margin-bottom: 0px !important;
-        }
+      label {
+        padding: 8px 12px;
+        margin-bottom: 0px !important;
+      }
 
-        input[type="file"] {
-          position: absolute;
-          height: 45px;
-          opacity: 0;
-        }
+      input[type="file"] {
+        position: absolute;
+        height: 45px;
+        opacity: 0;
+      }
     }
-    &_buttonNeedReview
-    {
+    &_buttonNeedReview {
       display: flex;
       color: $color_red !important;
       padding: 6px 0px;
       border: none;
       background: none;
-      svg
-      {
+      svg {
         height: 18px;
       }
     }
-    &_container
-    {
-      background: $color_gray
+    &_container {
+      background: $color_gray;
     }
-    &_info_section
-    {
+    &_info_section {
       border-bottom: 1px solid $color_gray_primary;
       padding-bottom: 16px;
       margin-bottom: 16px;
@@ -86,52 +74,42 @@
         }
       }
     }
-    &_price_line
-    {
+    &_price_line {
       display: flex;
       justify-content: space-between;
       padding: 6px 0px;
-      &:last-child
-      {
+      &:last-child {
         border-top: 1px dashed $color_gray_primary;
         padding: 8px 0px;
         font-weight: bold;
       }
     }
-    &_item
-    {
-      &_line
-      {
+    &_item {
+      &_line {
         display: flex;
         margin: 6px 0px;
         justify-content: space-between;
         color: $color_gray_text;
       }
-      &_image
-      {
+      &_image {
         width: 30px;
-        img
-        {
+        img {
           width: 30px;
         }
       }
-      &_desc
-      {
+      &_desc {
         margin: 0px 16px;
         width: calc(100% - 100px);
       }
     }
-
   }
-  &_orderhistory
-  {
+  &_orderhistory {
     padding-bottom: 1rem;
     white-space: nowrap;
     overflow-x: scroll;
   }
 
-  &_orderedItemDetailDelivered
-  {
+  &_orderedItemDetailDelivered {
     @extend .btn;
     @extend .btn_primary;
     text-transform: capitalize !important;
@@ -139,63 +117,52 @@
     white-space: pre-wrap;
   }
 
-  &_itemDetailNeedReview
-  {
+  &_itemDetailNeedReview {
     background: transparent;
     border: none;
     padding: 0;
     color: $color_red_dark;
     text-decoration: underline;
-    
+
     &:focus,
-    &:active
-    {
+    &:active {
       outline: 0;
       box-shadow: none;
     }
   }
-  
-  &_history
-  {
+
+  &_history {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid $color_gray_semi_dark;
     border-radius: 5px;
 
-    thead
-    {
+    thead {
       border: 1px solid $color_gray_semi_dark;
-      
-      tr
-      {
+
+      tr {
         padding: 1rem;
-        th
-        {
+        th {
           padding: 1rem;
         }
       }
     }
 
-    tbody
-    {
-      tr
-      {
+    tbody {
+      tr {
         border-bottom: 1px solid $color_gray_low;
       }
-      td
-      {
+      td {
         padding: 1rem;
         vertical-align: baseline;
 
-        ul
-        {
+        ul {
           margin: 0;
           padding: 0;
 
-          li
-          {
+          li {
             list-style: none;
-            margin-bottom: .5rem;
+            margin-bottom: 0.5rem;
           }
         }
       }
@@ -203,100 +170,84 @@
   }
 }
 
-.pagination
-{
+.pagination {
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  &_item
-  {
-    padding: .5rem;
-    margin: .25rem;
+  &_item {
+    color : $color_base_red;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
     list-style: none;
     cursor: pointer;
   }
 
-  &_active
-  {
-    color: $color_blue;
-    background: $color_blue_light;
-    border: 1px solid $color_blue;
+  &_active {
+    color: $color_white;
+    background: $color_base_red;
     border-radius: 4px;
   }
 }
 
-.account
-{
+.account {
   margin-bottom: 2rem;
   min-height: 70vh;
 
-  &_profile
-  {
+  &_profile {
     margin-top: 3rem;
 
-    &__logout
-    {
+    &__logout {
       cursor: pointer;
 
-      svg
-      {
+      svg {
         margin-bottom: 5px;
       }
     }
 
-    h2
-    {
+    h2 {
       font-size: 25px;
-      font-family: "Poppins-black";
 
       @media screen and (max-width: 575px) {
         font-size: 18px;
       }
 
-      span
-      {
-        &:last-child
-        {
+      span {
+        font-family: "Poppins-black";
+        &:last-child {
           margin-left: 1rem;
         }
       }
     }
   }
 
-  &_profilePoints
-  {
+  &_profilePoints {
     display: flex;
     align-items: center;
     font-size: 15px;
     color: $color_blue;
 
-    span
-    {
-      &:first-child
-      {
-        margin-right: .5rem;
+    span {
+      &:first-child {
+        margin-right: 0.5rem;
       }
     }
 
-    &__icon
-    {
+    &__icon {
       color: $color_blue;
       width: 1em;
       height: 1em;
     }
 
-    &__bold
-    {
-      margin-left: .35rem;
+    &__bold {
+      margin-left: 0.35rem;
       font-family: "Poppins-black";
     }
   }
 
-  &_shipmentTracking
-  {
+  &_shipmentTracking {
     position: fixed;
     display: block;
     margin: auto;
@@ -310,8 +261,7 @@
     padding-top: 3rem;
   }
 
-  &_shipmentContainer
-  {
+  &_shipmentContainer {
     width: 50%;
     margin: auto;
     background: white;
@@ -321,87 +271,74 @@
     }
   }
 
-  &_tab
-  {
+  &_tab {
     text-transform: uppercase;
     margin: 10px 0;
-    padding: 20px 0;
+    padding: 20px 20px;
     white-space: nowrap;
     overflow-x: auto;
-    border-bottom: 1px solid #ccc;
 
     @media screen and (max-width: 575px) {
       margin: 10px 0;
     }
 
-    &__pane
-    {
+    &__pane {
       width: 100%;
       min-height: 50vh;
       padding-top: 2rem;
+      padding-left: 20px;
+      padding-right: 20px;
     }
   }
 
-  &_tabNav
-  {
+  &_tabNav {
     display: inline-block;
     list-style: none;
     margin-right: 3rem;
     cursor: pointer;
 
-    &__link
-    {
-      color: $color_gray_semi_dark;
-      font-family: "Poppins-black";
+    &__link {
+      color: $color_black;
+      font-family: "Poppins-regular";
+      font-weight: 500;
       font-size: 12px;
-      
-      &:hover
-      {
-        color: $color_blue;
+
+      &:hover {
+        font-weight: 700;
         text-decoration: none;
         transition: color 500ms;
       }
     }
 
-    &__linkActive
-    {
+    &__linkActive {
       padding-bottom: 20px;
-      color: $color_blue;
-      border-bottom: 2px solid $color_blue;
+      color: $color_base_red;
+      border-bottom: 2px solid $color_base_red;
+      font-weight: 700;
     }
 
-    &:last-child
-    {
+    &:last-child {
       display: none;
     }
   }
 
-  &_info
-  {
-    display: flex;
-    justify-content: space-between;
-
-    @media screen and (max-width: 575px) {
-      flex-direction: column-reverse;
-    }
+  &_info {
+    display: block;
   }
 
-  &_myAccount
-  {
-    &_order 
-    {
+  &_myAccount {
+    display: block;
+    &_order {
       margin: 0;
       padding: 0;
       line-height: 2rem;
       text-align: left;
       margin-bottom: 2rem;
-      
-      &__list
-      {
+
+      &__list {
         list-style: none;
 
-        span:first-child
-        {
+        span:first-child {
           width: 170px;
           display: inline-block;
 
@@ -410,15 +347,31 @@
           }
         }
       }
+      &__listLabel {
+        display: block;
+        font-weight: 500;
+        min-width: 200px;
+
+        @media screen and (max-width: 767px) {
+          margin-bottom: 1rem;
+        }
+      }
+      &__listValue {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        color: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
     }
   }
 
-  &_edit
-  {
-    &__label
-    {
+  &_edit {
+    &__label {
+      display: block;
+      font-weight: 500;
       min-width: 200px;
-      margin-bottom: 0;
 
       @media screen and (max-width: 767px) {
         margin-bottom: 1rem;
@@ -426,10 +379,10 @@
     }
 
     & [data-identity="input-dateOfBirth"] {
-      width: 100% ;
+      width: 100%;
     }
 
-    & [class *="react-date-picker__wrapper"] {
+    & [class*="react-date-picker__wrapper"] {
       & button {
         margin-top: 0;
         width: 40px;
@@ -440,47 +393,40 @@
       background-color: $color_gray_low;
     }
 
-    & > button
-    {
+    & > button {
       margin-top: 1rem;
     }
   }
 
-  &_changePassword
-  {
-    & > button
-    {
+  &_changePassword {
+    & > button {
       margin-top: 1rem;
     }
   }
 
-  &_loyalty
-  {
+  &_loyalty {
     display: none;
     visibility: hidden;
     opacity: 0;
   }
 
-  &_buttonLocation
-  {
+  &_buttonLocation {
     display: block;
     width: 100%;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     border: 1px solid $color_gray_primary;
     color: $color_gray_text;
     background-color: $color_white;
     padding: 50px;
   }
 
-  &_mapArea
-  {
+  &_mapArea {
     width: 100%;
     height: 200px;
     position: relative;
   }
 
-  &_mapPopup
-  {
+  &_mapPopup {
     position: fixed;
     z-index: 10;
     top: 0;
@@ -493,13 +439,11 @@
     align-items: center;
   }
 
-  &_mapCloseIcon
-  {
+  &_mapCloseIcon {
     cursor: pointer;
   }
 
-  &_mapPopupContainer
-  {
+  &_mapPopupContainer {
     position: relative;
     width: 50vw;
     background: $color_white;
@@ -512,23 +456,20 @@
     }
   }
 
-  &_mapPopupHeader
-  {
+  &_mapPopupHeader {
     display: flex;
     align-items: center;
     padding: 15px;
   }
 
-  &_mapPopupHeaderTitle
-  {
+  &_mapPopupHeaderTitle {
     flex: 1;
     font-size: 16px;
     color: $color_black;
     text-align: center;
   }
 
-  &_mapPopupClose
-  {
+  &_mapPopupClose {
     border: none;
     background-color: transparent;
     font-family: "Poppins-black";
@@ -537,16 +478,14 @@
     margin: 0 !important;
 
     &:focus,
-    &:active
-    {
+    &:active {
       outline: 0;
       border: none;
       box-shadow: none;
     }
   }
 
-  &_mapPopupNote
-  {
+  &_mapPopupNote {
     font-size: 14px;
     background: $color_blue_light;
     color: $color_black;
@@ -554,16 +493,14 @@
     text-align: center;
   }
 
-  &_mapPopupMaps
-  {
+  &_mapPopupMaps {
     position: relative;
     background-color: $color_white;
     z-index: 1;
     width: 100%;
     height: 320px;
 
-    input
-    {
+    input {
       font-size: 14px;
       width: calc(100% - 75px);
       padding: 10px 15px;
@@ -580,8 +517,7 @@
     }
   }
 
-  &_mapPopupCenterButton
-  {
+  &_mapPopupCenterButton {
     position: absolute;
     right: 10px;
     background: #fff;
@@ -592,8 +528,7 @@
     margin: 0 !important;
   }
 
-  &_mapPopupLabelAddress
-  {
+  &_mapPopupLabelAddress {
     font-size: 14px;
     background: $color_white;
     color: $color_black;
@@ -601,61 +536,57 @@
   }
 }
 
-.membership
-{
-  &_status
-  {
-    background: $color_blue_light;
+.membership {
+  &_status {
+    background: $color_white;
+    border: 1px solid rgba(66, 76, 90, 0.28);
     padding: 18px;
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
-  &_accordion
-  {
+  &_accordion {
     display: grid;
     grid-template-columns: 50% 50%;
     margin-bottom: 10px;
   }
 
-  &_accordionToggle
-  {
+  &_accordionToggle {
     grid-column: 1;
     display: flex;
     align-items: center;
     cursor: pointer;
     margin-bottom: 10px;
 
-    & > p
-    {
+    & > p {
       font-family: "Poppins-medium";
       font-size: 18px;
       margin: 0;
     }
   }
 
-  &_accordionIcon
-  {
+  &_accordionIcon {
     margin-left: 10px;
+    & > svg {
+      stroke: $color_base_red;
+    }
   }
 
-  &_totalPoints
-  {
+  &_totalPoints {
     grid-row: 1;
     grid-column: 2;
     align-self: center;
     text-align: right;
-    font-size: 14px;
+    font-size: 12px;
+    font-style: italic;
     margin-bottom: 10px !important;
   }
 
-  &_progress
-  {
-    border-radius: 6px; 
+  &_progress {
+    border-radius: 6px;
     width: 100%;
     height: 10px;
 
-    &::-webkit-progress-bar
-    {
+    &::-webkit-progress-bar {
       border-radius: 6px;
       background-color: $color_gray_semi_dark;
     }
@@ -666,62 +597,56 @@
     }
   }
 
-  &_prompt
-  {
+  &_prompt {
     margin: 0;
     color: $color_gray_dark;
   }
 
-  &_linkContinue
-  {
-    background: $color_blue_light;
+  &_linkContinue {
+    background: rgba(224, 224, 224, 0.5);;
     padding: 1rem;
     margin-bottom: 30px;
     border-radius: 3px;
     font-size: 16px;
+    display: flex;
+    flex-direction: row;
 
-    & > p
-    {
+    & > p {
       margin: 0;
     }
 
-    & > a
-    {
-      color: $color_blue;
+    & > a {
+      margin-left: 20px;
+      color: #E89F71;
+      font-weight: 700;
 
-      &:hover
-      {
+      &:hover {
         text-decoration: none;
       }
     }
   }
 
-  &_history
-  {
-    & > h1
-    {
+  &_history {
+    & > h1 {
       font-family: "Poppins-medium";
       font-size: 18px;
       margin-bottom: 20px;
     }
   }
 
-  &_historyItem
-  {
+  &_historyItem {
     display: grid;
     grid-template-columns: 70% auto;
     border-bottom: 1px solid $color_gray_semi_dark;
     padding-bottom: 20px;
     margin-bottom: 20px;
 
-    p
-    {
+    p {
       margin: 0;
     }
   }
 
-  &_orderId
-  {
+  &_orderId {
     grid-row: 1;
     grid-column: 1;
     width: fit-content;
@@ -730,35 +655,30 @@
     margin-bottom: 5px;
     border-radius: 2px;
 
-    & > p
-    {
+    & > p {
       font-style: italic;
 
-      & > span
-      {
-        font-family: "Poppins-medium"; 
+      & > span {
+        font-family: "Poppins-medium";
       }
     }
   }
 
-  &_transactionType
-  {
+  &_transactionType {
     grid-row: 2;
     grid-column: 1;
     font-family: "Poppins-medium";
     font-size: 18px;
   }
 
-  &_transactionDate
-  {
+  &_transactionDate {
     grid-row: 3;
     grid-column: 1;
     font-size: 14px;
     color: $color_gray_dark;
   }
 
-  &_point
-  {
+  &_point {
     grid-row: 2;
     grid-column: 2;
     align-self: center;
@@ -766,39 +686,33 @@
     font-size: 18px;
   }
 
-  &_pagination
-  {
+  &_pagination {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  &_itemPerPage
-  {
+  &_itemPerPage {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  &_itemPerPageLabel
-  {
-    & > p
-    {
+  &_itemPerPageLabel {
+    & > p {
       margin-right: 10px;
       margin-bottom: 0;
     }
   }
 
-  &_itemPerPageOptions
-  {
-    & > select
-    {
+  &_itemPerPageOptions {
+    & > select {
       padding: 7.5px 10px;
     }
   }
   &_info {
     &_container {
-      background: rgba(251, 192, 45, 0.5);
+      background: rgba(224, 224, 224, 0.5);
       padding: 10px 12px;
       width: 100%;
       display: flex;
@@ -817,23 +731,21 @@
     &_button {
       border: none;
       background: none;
-      color: rgb(0, 145, 254);
+      color: #E89F71;
+      font-weight: 700;
       font-size: 14px;
     }
   }
 }
 
 @media screen and (max-width: 575px) {
-  .membership
-  {
-    &_pagination
-    {
+  .membership {
+    &_pagination {
       display: block;
       margin-top: 2rem;
     }
 
-    &_itemPerPage
-    {
+    &_itemPerPage {
       margin-bottom: 20px;
     }
   }

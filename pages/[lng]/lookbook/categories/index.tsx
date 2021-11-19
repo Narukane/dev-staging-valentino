@@ -1,30 +1,37 @@
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Router from "next/router";
+/* library Package */
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   Lookbook,
   isLookbookAllowed,
   useI18n
-} from "@sirclo/nexus";
-import { useBrand } from "lib/useBrand";
-import useWindowSize from "lib/useWindowSize";
-import Layout from "components/Layout/Layout";
-import Placeholder from "components/Placeholder";
+} from '@sirclo/nexus'
+
+/* library Template */
+import useWindowSize from 'lib/useWindowSize'
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import Layout from 'components/Layout/Layout'
+import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
 
 import styles from "public/scss/pages/Lookbook.module.scss";
 
 const classesLookbook = {
   containerClassName: styles.lookbook,
-  rowClassName: styles.lookbook_row,
-  lookbookContainerClassName: styles.lookbook_item,
-  imageClassName: `${styles.lookbook_itemImage} d-block mt-0 mx-auto w-100`,
-  lookbookLabelContainerClassName: `${styles.lookbook_itemDetail}`,
-  labelClassName: `d-flex flex-row align-items-center justify-content-start m-0 p-0`,
-  linkClassName: `${styles.lookbook_itemButton}`,
+  rowClassName: 'card-columns',
+  lookbookContainerClassName: `card ${styles.lookbook_item}`,
+  imageClassName: styles.lookbook_itemImage,
+  lookbookLabelContainerClassName: styles.lookbook_itemDetail,
+  labelClassName: styles.lookbook_itemDetail_label,
+  linkClassName: styles.lookbook_itemDetail_links,
 };
 
-const classesPlaceholderLookbook = {
-  placeholderList: `${styles.lookbook_placeholder} d-block p-0 mt-0 mb-3 mx-auto w-100`
+const classesEmptyComponent = {
+  emptyContainer: `${styles.lookbook__empty}`,
+  emptyTitle: `${styles.lookbook__emptyTitle}`,
+  emptyDesc: `${styles.lookbook__emptyDesc}`,
 }
 
 const LookbookCategory: FC<any> = ({
@@ -36,6 +43,8 @@ const LookbookCategory: FC<any> = ({
   const size = useWindowSize();
   const LookbookAllowed = isLookbookAllowed();
 
+  const linksBreadcrumb = [`${i18n.t("home.title")}`, `${i18n.t("lookbook.title")}`]
+
   return (
     <Layout
       i18n={i18n}
@@ -44,57 +53,34 @@ const LookbookCategory: FC<any> = ({
       brand={brand}
       withAllowed={LookbookAllowed}
     >
-      <div className={`${styles.lookbook_wrapper} container`}>
-        <div className="row">
-          <div className="col-12 col-sm-8 offset-sm2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-
-            <div className={`${styles.contact_info} ${styles.contact_info__top}`}>
-              <h1>{i18n.t("lookbook.title")}</h1>
-            </div>
-
-            <Lookbook
-              classes={classesLookbook}
-              linkText={i18n.t("lookbook.seeCollection")}
-              pathPrefix={`lookbook/categories`}
-              loadingComponent={
-                <div className="mt-3">
-                  <Placeholder
-                    classes={classesPlaceholderLookbook}
-                    withList
-                    listMany={5}
+      <>
+          <Breadcrumb
+            links={linksBreadcrumb}
+            lng={lng} />
+          <section>
+            <div className="container">
+              <Lookbook
+                classes={classesLookbook}
+                linkText={i18n.t("lookbook.seeCollection")}
+                pathPrefix={`lookbook/categories`}
+                thumborSetting={{
+                  width: size.width < 768 ? 400 : 600,
+                  format: "webp",
+                  quality: 85,
+                }}
+                emptyStateComponent={
+                  <EmptyComponent
+                    classes={classesEmptyComponent}
+                    title={i18n.t("lookbook.isEmpty")}
+                    logo={
+                      <img className={styles.lookbook__emptyIcon} src="/icon/emptyIcon.svg" />
+                    }
                   />
-                </div>
-              }
-              emptyStateComponent={
-                <p className="d-flex flex-row align-items-center justify-content-center text-align-center p-5">
-                  {i18n.t("lookbook.isEmpty")}
-                </p>
-              }
-              errorComponent={
-                <div className={styles.lookbook_popup}>
-                  <div className={styles.lookbook_popupContent}>
-                    <h3>{i18n.t("lookbook.errorTitle")}</h3>
-                    <p>{i18n.t("lookbook.errorDesc")}</p>
-                  </div>
-                  <div>
-                    <button
-                      className={`btn ${styles.btn_primary} py-3 px-5`}
-                      onClick={() => Router.push("/[lng]", `/${lng}`)}
-                    >
-                      {i18n.t("lookbook.errorButton")}
-                    </button>
-                  </div>
-                </div>
-              }
-              thumborSetting={{
-                width: size.width < 768 ? 400 : 600,
-                format: "webp",
-                quality: 85,
-              }}
-            />
-          </div>
-        </div>
-      </div>
+                }
+              />
+            </div>
+          </section>
+        </>
     </Layout>
   );
 }

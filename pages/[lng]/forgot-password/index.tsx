@@ -44,6 +44,7 @@ const ForgotPassword: FC<any> = ({
                 <ResetPassword
                   classes={classesResetPassword}
                   onErrorMsg={(msg) => toast.error(msg)}
+                  onSuccessMsg={(msg) => toast.success(msg)}
                   loadingComponent={<Loader color="text-light" />}
                 />
               </div>
