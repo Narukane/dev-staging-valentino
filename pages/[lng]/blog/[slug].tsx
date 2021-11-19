@@ -23,10 +23,8 @@ const classesBlogSingle = {
   authorInfoClassName: "d-none",
   createdByClassName: `d-flex flex-row align-items-center justify-content-start flex-nowrap w-100`,
   createdByInnerClassName: `${styles.blog_detailMeta} d-flex flex-row align-items-center justify-content-start flex-wrap`,
-  authorClassName:
-    "d-flex flex-row align-items-center justify-content-start order-2",
-  dateClassName:
-    "d-flex flex-row align-items-center justify-content-start order-1",
+  authorClassName: "d-flex flex-row align-items-center justify-content-start order-2",
+  dateClassName: "d-flex flex-row align-items-center justify-content-start order-1",
   blogContentClassName: styles.blog_detailContent,
 };
 
