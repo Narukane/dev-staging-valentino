@@ -51,7 +51,7 @@ const LookbookCategory: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
-      withAllowed={LookbookAllowed}
+      // withAllowed={LookbookAllowed}
     >
       <>
           <Breadcrumb

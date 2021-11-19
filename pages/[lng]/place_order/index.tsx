@@ -354,7 +354,7 @@ const PlaceOrderPage: FC<any> = ({
                         </div>
                       </div>
                     )}
-                    <div className="col-12 col-md-12 col-lg-6 offset-lg-3 mt-4">
+                    <div className="col-12 col-md-12 col-lg-8 offset-lg-2 mt-4">
                       <PlaceOrderForm
                         classes={placeOrderClasses}
                         onErrorMsg={(msg) => toast.error(msg)}

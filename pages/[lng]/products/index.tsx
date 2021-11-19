@@ -18,6 +18,7 @@ import Placeholder from "components/Placeholder";
 import { useBrand } from "lib/useBrand";
 import { Sliders, ArrowUp } from "react-feather";
 import styles from "public/scss/pages/Products.module.scss";
+import stylesPagination from "public/scss/components/Pagination.module.scss"
 
 const Popup = dynamic(() => import("components/Popup/Popup"));
 
@@ -86,6 +87,13 @@ const classesPlaceholderCatProduct = {
 const classesPlaceholderProduct = {
   placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_product__card}`,
 };
+
+const productsPaginationClasses = {
+  pagingClassName: `col-12 ${stylesPagination.pagination}`,
+  activeClassName: stylesPagination.pagination_active,
+  itemClassName: stylesPagination.pagination_item,
+};
+
 
 const ProductsPage: FC<any> = ({
   lng,
@@ -216,12 +224,14 @@ const ProductsPage: FC<any> = ({
                   key={i}
                   tagName={tagname}
                   pageNumber={i}
-                  itemPerPage={8}
+                  itemPerPage={6}
                   getPageInfo={setPageInfo as any}
                   collectionSlug={categories}
                   sort={sort}
                   filter={filterProduct}
                   withSeparatedVariant={true}
+                  callPagination={true}
+                  paginationClasses={productsPaginationClasses}
                   classes={classesProducts}
                   fullPath={`product/{id}`}
                   pathPrefix={`product`}

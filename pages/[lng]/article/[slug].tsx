@@ -10,6 +10,7 @@ import SEO from "components/SEO";
 import Placeholder from "components/Placeholder";
 import { useBrand } from "lib/useBrand";
 import styles from "public/scss/pages/Article.module.scss";
+import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
 
 const classesPlaceholderArticle = {
 	placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_article}`,
@@ -24,6 +25,7 @@ const ArticleDetail: FC<any> = ({
 	const i18n: any = useI18n();
 
 	const [title, setTitle] = useState<string>("");
+	
 
 	return (
 		<Layout
@@ -37,7 +39,6 @@ const ArticleDetail: FC<any> = ({
 				<div className="container">
 					<div className="row">
 						<div className="col-12 col-lg-10 offset-lg-1">
-							<h3 className={styles.article_title}>{title}</h3>
 							<Article
 								containerClassName={styles.article}
 								slug={slug as string}

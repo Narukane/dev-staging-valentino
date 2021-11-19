@@ -369,7 +369,7 @@ const ShippingMethodPage: FC<any> = ({
                         </div>
                       </div>
                     )}
-                    <div className="col-12 col-md-12 col-lg-6 offset-lg-3 mt-4">
+                    <div className="col-12 col-md-12 col-lg-8 offset-lg-2 mt-4">
                       <div className={styles.shippingmethod}>
                         <ShippingMethods
                           classes={classesShippingMethod}

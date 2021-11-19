@@ -15,6 +15,7 @@ import Layout from "components/Layout/Layout";
 import { GRAPHQL_URI } from "components/Constants";
 import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
 import styles from "public/scss/pages/Blog.module.scss";
+import stylesPagination from "public/scss/components/Pagination.module.scss"
 
 const EmptyComponent = dynamic(() => import("components/EmptyComponent/EmptyComponent"));
 const Placeholder = dynamic(() => import("components/Placeholder"));
@@ -47,9 +48,9 @@ const classesEmptyComponent = {
 };
 
 const classesPagination = {
-  pagingClassName: `col-12 ${styles.pagination}`,
-  activeClassName: styles.pagination_active,
-  itemClassName: styles.pagination_item
+  pagingClassName: `col-12 ${stylesPagination.pagination}`,
+  activeClassName: stylesPagination.pagination_active,
+  itemClassName: stylesPagination.pagination_item
 }
 
 const classesPlaceholderBlogs = {

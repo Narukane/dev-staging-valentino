@@ -11,6 +11,7 @@ import Layout from "components/Layout/Layout";
 import { useBrand } from "lib/useBrand";
 import { toast } from "react-toastify";
 import styles from "public/scss/pages/Contact.module.scss";
+import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
 
 const Placeholder = dynamic(() => import("components/Placeholder"));
 
@@ -39,6 +40,7 @@ const ContactPage: FC<any> = ({
 
   const i18n: any = useI18n();
   const allowedEnquiry = isEnquiryAllowed()
+  const linksBreadcrumb = [`${i18n.t("home.title")}`, `${i18n.t("contact.title")}`]
 
   return (
     <Layout
@@ -48,12 +50,13 @@ const ContactPage: FC<any> = ({
       brand={brand}
       withAllowed={allowedEnquiry}
     >
+      <Breadcrumb
+            links={linksBreadcrumb} lng={lng} />
       <div className="container">
         <div className="row">
           <div className="col-12 col-lg-10 offset-lg-1">
 
             <div className={`${styles.contact_info} ${styles.contact_info__top}`}>
-              <h1>{i18n.t("contact.title")}</h1>
               <Widget
                 pos="main-content-1"
                 widgetClassName={styles.contact_info}
@@ -66,25 +69,11 @@ const ContactPage: FC<any> = ({
                 }
               />
             </div>
-
             <Contact
               classes={classesContact}
               isAddressDetail={false}
               onCompleted={() => toast.success(i18n.t("contact.submitSuccess"))}
               onError={() => toast.error(i18n.t("contact.submitError"))}
-              widget={
-                <Widget
-                  pos="footer-4"
-                  widgetClassName={styles.contact_info}
-                  loadingComponent={
-                    <Placeholder
-                      classes={classesPlaceholderContact}
-                      withList
-                      listMany={5}
-                    />
-                  }
-                />
-              }
             />
           </div>
         </div>

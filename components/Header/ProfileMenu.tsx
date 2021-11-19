@@ -102,22 +102,16 @@ const ProfileMenu: FC<any> = ({
         <div
           className={`${styles.nav__icon} ml-2 ml-md-4  d-none
           d-lg-flex`}
-          onClick={toogleCart}
         >
+          <Link href="/[lng]/cart" as={`/${lng}/cart`}>
           <ShoppingCart
             size={size.width < 575 ? 18 : 24}
             color="white"
           />
-          <span className={styles.badge_cart} onClick={toogleCart}>{totalQuantity}</span>
+          </Link>
+          <span className={styles.badge_cart} onClick={() => router.push(`/[lng]/cart`, `/${lng}/cart`)}>{totalQuantity}</span>
         </div>
       </a>
-      {openCart &&
-        <PopupCart
-          setPopup={setOpenCart}
-          popupTitle={i18n.t("cart.title")}
-          lng={lng}
-        />
-      }
       {openSearch &&
         <Popup
           withHeader

@@ -10,19 +10,18 @@
     }
 
     &_form,
-    &_widget
+    &_widget,
+    &_map
     {
         width: 100%;
+        position: relative;
     }
 
     &_map
     {
-        position: absolute;
-        opacity: 1;
-        width: 200px;
-        height: 200px;
-        visibility: visible;
-        bottom: 50%;
+        display: none;
+        opacity: 0;
+        visibility: hidden;
     }
 
     &_form

@@ -24,6 +24,7 @@ import styles from "public/scss/pages/Account.module.scss";
 import stylesPopupConfirmationOrder from "public/scss/components/popupConfirmationOrder.module.scss";
 import stylesPopupCheckPaymentOrder from "public/scss/components/CheckPaymentOrder.module.scss";
 import stylesNotif from "public/scss/components/Notification.module.scss";
+import stylesPagination from "public/scss/components/Pagination.module.scss"
 import Breadcrumblink from "components/Breadcrumb/Breadcrumblink";
 
 const ACTIVE_CURRENCY = "IDR";
@@ -205,9 +206,9 @@ const classesAccount = {
 };
 
 const orderHistoryPaginationClasses = {
-  pagingClassName: styles.pagination,
-  activeClassName: styles.pagination_active,
-  itemClassName: styles.pagination_item,
+  pagingClassName: stylesPagination.pagination,
+  activeClassName: stylesPagination.pagination_active,
+  itemClassName: stylesPagination.pagination_item,
 };
 
 const AccountsPage: FC<any> = ({
