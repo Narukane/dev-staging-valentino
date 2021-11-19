@@ -15,13 +15,6 @@ const classesPlaceholderArticle = {
 	placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_article}`,
 }
 
-const classesArticleCategories = {
-	articleCategoriesContainerClass: styles.article_categories,
-	categoryTitleClass: styles.article_categories_title,
-	articleCategoriesUlClass: styles.article_categoriesOrder,
-	articleCategoriesLiClass: styles.article_categoriesOrder_list,
-}
-
 const ArticleDetail: FC<any> = ({
 	lng,
 	lngDict,
@@ -43,7 +36,7 @@ const ArticleDetail: FC<any> = ({
 			<section>
 				<div className="container">
 					<div className="row">
-						<div className="col-12 col-md-9">
+						<div className="col-12 col-lg-10 offset-lg-1">
 							<h3 className={styles.article_title}>{title}</h3>
 							<Article
 								containerClassName={styles.article}
@@ -52,11 +45,6 @@ const ArticleDetail: FC<any> = ({
 								loadingComponent={
 									<Placeholder classes={classesPlaceholderArticle} withImage />
 								}
-							/>
-						</div>
-						<div className="col-12 col-md-3">
-							<ArticleCategories
-								classes={classesArticleCategories}
 							/>
 						</div>
 					</div>

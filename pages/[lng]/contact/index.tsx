@@ -50,12 +50,12 @@ const ContactPage: FC<any> = ({
     >
       <div className="container">
         <div className="row">
-          <div className="col-12 col-sm-8 offset-sm2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+          <div className="col-12 col-lg-10 offset-lg-1">
 
             <div className={`${styles.contact_info} ${styles.contact_info__top}`}>
               <h1>{i18n.t("contact.title")}</h1>
               <Widget
-                pos="footer-3"
+                pos="main-content-1"
                 widgetClassName={styles.contact_info}
                 loadingComponent={
                   <Placeholder

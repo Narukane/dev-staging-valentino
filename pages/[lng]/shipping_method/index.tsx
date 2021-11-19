@@ -262,11 +262,9 @@ const ShippingMethodPage: FC<any> = ({
                   </div>
                   <div className="row">
                     <div className="col-12 col-md-12 col-lg-10 offset-lg-1">
-                      {/* <hr className={styles.shipping_line} /> */}
                       <div className={styles.shipping_steps}>
                         <Breadcrumb currentStep={2} />
                       </div>
-                      {/* <hr className={`${styles.shipping_lineSecond}`} /> */}
                     </div>
                     {size.width < 576 && (
                       <div className={styles.ordersummary_collapse}>
@@ -275,7 +273,6 @@ const ShippingMethodPage: FC<any> = ({
                           onClick={toogleOrderSummary}
                         >
                           <div className={styles.ordersummary_collapseTitle}>
-                            <ShoppingCart color="white" />
                             <h6>{i18n.t("placeOrder.orderSummary")}</h6>
                           </div>
                           {openOrderSummary ? (

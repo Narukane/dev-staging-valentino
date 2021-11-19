@@ -242,11 +242,9 @@ const PlaceOrderPage: FC<any> = ({
                   </div>
                   <div className="row">
                     <div className="col-12 col-md-12 col-lg-10 offset-lg-1">
-                      {/* <hr className={styles.placeorder_line} /> */}
                       <div className={styles.placeorder_steps}>
                         <Breadcrumb currentStep={1} />
                       </div>
-                      {/* <hr className={`${styles.placeorder_lineSecond}`} /> */}
                     </div>
                     {size.width < 576 && (
                       <div className={styles.ordersummary_collapse}>
@@ -255,7 +253,6 @@ const PlaceOrderPage: FC<any> = ({
                           onClick={toogleOrderSummary}
                         >
                           <div className={styles.ordersummary_collapseTitle}>
-                            <ShoppingCart color="white" />
                             <h6>{i18n.t("placeOrder.orderSummary")}</h6>
                           </div>
                           {openOrderSummary ? (
