@@ -1,17 +1,24 @@
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useRouter } from "next/router";
+/* library Package */
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
 import {
   OrderReview,
   useI18n,
-} from "@sirclo/nexus";
-import Layout from "components/Layout/Layout";
-import useWindowSize from "lib/useWindowSize";
-import SEO from "components/SEO";
-import { useBrand } from "lib/useBrand";
-import { toast } from "react-toastify";
-import { ChevronDown, ChevronUp } from "react-feather";
-import styles from "public/scss/pages/Review.module.scss";
+} from '@sirclo/nexus'
+import { toast } from 'react-toastify'
+import { ChevronDown, ChevronUp } from 'react-feather'
+
+/* library Template */
+import useWindowSize from 'lib/useWindowSize'
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import Layout from 'components/Layout/Layout'
+import SEO from 'components/SEO'
+
+/* styles */
+import styles from 'public/scss/pages/Review.module.scss'
 
 const classesOrderReview = {
   titleContainerClassName: styles.orderReview_titleContainer,

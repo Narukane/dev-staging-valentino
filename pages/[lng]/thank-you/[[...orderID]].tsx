@@ -1,21 +1,26 @@
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { ThankYou, useI18n } from "@sirclo/nexus";
-import { toast } from "react-toastify";
-
-
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import { useBrand } from "lib/useBrand";
+/* library Package */
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { ThankYou, useI18n } from '@sirclo/nexus'
+import { toast } from 'react-toastify'
 import {
   Check,
   ChevronUp,
   ChevronDown,
   Copy
-} from "react-feather";
-import styles from "public/scss/pages/ThankYou.module.scss";
-import stylesBanks from "public/scss/components/BanksAccount.module.scss";
-import stylesOrder from "public/scss/pages/PaymentNotifThankYou.module.scss";
+} from 'react-feather'
+
+/* library Template */
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+
+/* styles */
+import styles from 'public/scss/pages/ThankYou.module.scss'
+import stylesBanks from 'public/scss/components/BanksAccount.module.scss'
+import stylesOrder from 'public/scss/pages/PaymentNotifThankYou.module.scss'
 
 const classesThankYouPage = {
   thankYouClassName: styles.thankyou_inner,

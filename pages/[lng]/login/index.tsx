@@ -1,25 +1,28 @@
 /* library package */
-import { FC, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { toast } from "react-toastify";
-import { Eye, EyeOff, ArrowLeft, User, Mail } from "react-feather";
-import { Login, useI18n, SingleSignOn, WhatsAppOTPInput } from "@sirclo/nexus";
+import { FC, useState } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
+import { Eye, EyeOff, ArrowLeft, User, Mail } from 'react-feather'
+import { Login, useI18n, SingleSignOn, WhatsAppOTPInput } from '@sirclo/nexus'
+
 /* library template */
-import { parseCookies } from "lib/parseCookies";
-import redirectIfAuthenticated from "lib/redirectIfAuthenticated";
-import { useBrand } from "lib/useBrand";
-import { useGoogleAuth } from "lib/useGoogleAuth";
-import { useFacebookAuth } from "lib/useFacebookAuth";
-import { useWhatsAppOTPSetting } from "lib/useWhatsappOtp";
+import { parseCookies } from 'lib/parseCookies'
+import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
+import { useBrand } from 'lib/useBrand'
+import { useGoogleAuth } from 'lib/useGoogleAuth'
+import { useFacebookAuth } from 'lib/useFacebookAuth'
+import { useWhatsAppOTPSetting } from 'lib/useWhatsappOtp'
+
 /* components */
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import Loader from "components/Loader/Loader";
-import LoaderPages from "components/Loader/LoaderPages";
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import Loader from 'components/Loader/Loader'
+import LoaderPages from 'components/Loader/LoaderPages'
+
 /* styles */
-import styles from "public/scss/pages/Login.module.scss";
+import styles from 'public/scss/pages/Login.module.scss'
 
 const loginClasses = {
   containerClassName: `${styles.login_item} ${styles.login_item__form}`,
@@ -255,8 +258,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
 }) => {
   const brand = await useBrand(req);
-  const defaultLanguage =
-    brand?.settings?.defaultLanguage || params.lng || "id";
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || "id"
   const { default: lngDict = {} } = await import(
     `locales/${defaultLanguage}.json`
   );

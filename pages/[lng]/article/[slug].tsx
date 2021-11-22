@@ -1,16 +1,21 @@
-import { FC, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+/* library package */
+import { FC, useState } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
 	Article,
-	ArticleCategories,
 	useI18n
-} from "@sirclo/nexus";
-import Layout from "components/Layout/Layout";
-import SEO from "components/SEO";
-import Placeholder from "components/Placeholder";
-import { useBrand } from "lib/useBrand";
-import styles from "public/scss/pages/Article.module.scss";
-import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
+} from '@sirclo/nexus'
+
+/* library template */
+import { useBrand } from 'lib/useBrand'
+
+/* components */
+import Layout from 'components/Layout/Layout'
+import SEO from 'components/SEO'
+import Placeholder from 'components/Placeholder'
+
+/* styles */
+import styles from 'public/scss/pages/Article.module.scss'
 
 const classesPlaceholderArticle = {
 	placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_article}`,

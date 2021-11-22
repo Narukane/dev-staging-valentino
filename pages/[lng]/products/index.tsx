@@ -1,26 +1,33 @@
-import { FC, useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+/* library Package */
+import { FC, useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   Products,
   ProductFilter,
   ProductCategory,
   useI18n,
-} from "@sirclo/nexus";
-import useQuery from "lib/useQuery";
-import useWindowSize from "lib/useWindowSize";
-import convertToTextFromQuery from "lib/convertToTextFromQuery";
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import EmptyComponent from "components/EmptyComponent/EmptyComponent";
-import Placeholder from "components/Placeholder";
-import { useBrand } from "lib/useBrand";
-import { Sliders, ArrowUp } from "react-feather";
-import styles from "public/scss/pages/Products.module.scss";
-import stylesPagination from "public/scss/components/Pagination.module.scss"
+} from '@sirclo/nexus'
+import { Sliders, ArrowUp } from 'react-feather'
 
-const Popup = dynamic(() => import("components/Popup/Popup"));
+
+/* library Template */
+import useQuery from 'lib/useQuery'
+import useWindowSize from 'lib/useWindowSize'
+import convertToTextFromQuery from 'lib/convertToTextFromQuery'
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
+import Placeholder from 'components/Placeholder'
+import Popup from 'components/Popup/Popup'
+
+/* styles */
+import styles from 'public/scss/pages/Products.module.scss'
+import stylesPagination from 'public/scss/components/Pagination.module.scss'
+
 
 const classesProducts = {
   productContainerClassName: `col-6 col-md-4 products_list ${styles.product}`,

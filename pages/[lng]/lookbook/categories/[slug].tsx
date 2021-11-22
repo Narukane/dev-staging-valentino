@@ -12,7 +12,7 @@ import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
 
 /* styles */
-import styles from "public/scss/pages/Lookbook.module.scss";
+import styles from 'public/scss/pages/Lookbook.module.scss'
 
 const classesLookbookSingle = {
   containerClassName: styles.lookbook_detail,

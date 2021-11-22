@@ -1,22 +1,15 @@
-import { FC, useState, useEffect } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import dynamic from "next/dynamic";
-import Router from "next/router";
+/* library Package */
+import { FC, useState, useEffect } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Router from 'next/router'
 import {
   PlaceOrderForm,
   CartSummary,
   useI18n,
   PrivateRoute,
-} from "@sirclo/nexus";
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import Breadcrumb from "components/Breadcrumb/Breadcrumb";
-import EmptyComponent from "components/EmptyComponent/EmptyComponent";
-import useWindowSize from "lib/useWindowSize";
-import { useBrand } from "lib/useBrand";
+} from '@sirclo/nexus'
 import {
   ArrowLeft,
-  ShoppingCart,
   X as XIcon,
   Calendar,
   ChevronDown,
@@ -25,13 +18,24 @@ import {
   Eye,
   EyeOff,
   Crosshair,
-} from "react-feather";
-import { toast } from "react-toastify";
-import styles from "public/scss/pages/Placeorder.module.scss";
+} from 'react-feather'
+import { toast } from 'react-toastify'
 
-const Popup = dynamic(() => import("components/Popup/Popup"));
-const Placeholder = dynamic(() => import("components/Placeholder"));
-const LoaderPages = dynamic(() => import("components/Loader/LoaderPages"));
+/* library Template */
+import useWindowSize from 'lib/useWindowSize'
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
+import Popup from 'components/Popup/Popup'
+import Placeholder from 'components/Placeholder'
+import LoaderPages from 'components/Loader/LoaderPages'
+
+/* styles */
+import styles from 'public/scss/pages/Placeorder.module.scss'
 
 const placeOrderClasses = {
   placeOrderClassName: styles.placeorder,
@@ -501,8 +505,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
 }) => {
   const brand = await useBrand(req);
-  const defaultLanguage =
-    brand?.settings?.defaultLanguage || params.lng || "id";
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || "id";
   const { default: lngDict = {} } = await import(
     `locales/${defaultLanguage}.json`
   );

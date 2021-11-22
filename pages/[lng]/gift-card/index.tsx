@@ -1,9 +1,16 @@
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { GiftCard, useI18n } from "@sirclo/nexus";
-import { useBrand } from "lib/useBrand";
-import Layout from "components/Layout/Layout";
-import styles from "public/scss/pages/GiftCard.module.scss";
+/* library Package */
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { GiftCard, useI18n } from '@sirclo/nexus'
+
+/* library Template */
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import Layout from 'components/Layout/Layout'
+
+/* styles */
+import styles from 'public/scss/pages/GiftCard.module.scss'
 
 const classesGiftCard = {
   containerClassName: `${styles.giftcard_item} ${styles.giftcard_item__form}`,

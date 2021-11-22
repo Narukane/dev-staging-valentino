@@ -1,17 +1,24 @@
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { SetNewPassword, useI18n } from "@sirclo/nexus";
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import Loader from "components/Loader/Loader";
-import { useBrand } from "lib/useBrand";
-import { toast } from "react-toastify";
+/* library Package */
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { SetNewPassword, useI18n } from '@sirclo/nexus'
+import { toast } from 'react-toastify'
 import {
   Eye,
   EyeOff,
   CheckCircle
-} from "react-feather";
-import styles from "public/scss/pages/ResetPassword.module.scss";
+} from 'react-feather'
+
+/* library Template */
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import Loader from 'components/Loader/Loader'
+
+/* styles */
+import styles from 'public/scss/pages/ResetPassword.module.scss'
 
 const classesSetNewPassword = {
   containerClassName: styles.resetPassword_innerForm,

@@ -16,6 +16,7 @@ import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
 import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
 
+/* styles */
 import styles from "public/scss/pages/Lookbook.module.scss";
 
 const classesLookbook = {
@@ -51,7 +52,7 @@ const LookbookCategory: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
-      // withAllowed={LookbookAllowed}
+      withAllowed={LookbookAllowed}
     >
       <>
           <Breadcrumb

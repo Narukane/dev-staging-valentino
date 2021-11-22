@@ -1,38 +1,31 @@
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Link from "next/link";
-import Router from "next/router";
-import dynamic from "next/dynamic";
+/* library Package */
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
 import {
-  CustomerDetail,
   ListPaymentMethod,
   PrivateRoute,
   useI18n,
-  useShippingMethod,
-  formatPrice,
-  useBuyerNotes,
-} from "@sirclo/nexus";
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import Breadcrumb from "components/Breadcrumb/Breadcrumb";
-import Loader from "components/Loader/Loader";
-import EmptyComponent from "components/EmptyComponent/EmptyComponent";
-import { useBrand } from "lib/useBrand";
-import { useWhatsAppOTPSetting } from "lib/useWhatsappOtp";
-import { ArrowLeft, Info, X as XIcon } from "react-feather";
-import { toast } from "react-toastify";
-import styles from "public/scss/pages/PaymentMethod.module.scss";
-import stylesOptIn from "public/scss/components/OptIn.module.scss";
+} from '@sirclo/nexus'
+import { ArrowLeft, X as XIcon } from 'react-feather'
+import { toast } from 'react-toastify'
 
-const LoaderPages = dynamic(() => import("components/Loader/LoaderPages"));
-const Placeholder = dynamic(() => import("components/Placeholder"));
+/* library Template */
+import { useBrand } from 'lib/useBrand'
+import { useWhatsAppOTPSetting } from 'lib/useWhatsappOtp'
 
-const classesCustomerDetail = {
-  customerDetailBoxClass: styles.customer,
-  addressContainerClassName: styles.customer_info,
-  addressDetailClassName: styles.customer_infoPerson,
-  addressValueClassName: styles.customer_infoPersonValue,
-};
+/* component */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
+import Loader from 'components/Loader/Loader'
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
+import LoaderPages from 'components/Loader/LoaderPages'
+import Placeholder from 'components/Placeholder'
+
+/* styles */
+import styles from 'public/scss/pages/PaymentMethod.module.scss'
+import stylesOptIn from 'public/scss/components/OptIn.module.scss'
 
 const classesListPaymentMethod = {
   listPaymentDivClassName: "container",
@@ -117,10 +110,6 @@ const classesEmptyComponent = {
   emptyTitle: styles.payment_empty__title,
 };
 
-const classesPlaceholderCustomerDetail = {
-  placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_customerDetail}`,
-};
-
 const classesPlaceholderPayment = {
   placeholderList: `${styles.placeholderItem} ${styles.placeholderItem_paymentMethod}`,
 };
@@ -142,17 +131,7 @@ const PaymentMethods: FC<any> = ({
   brand,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n();
-  const { data } = useShippingMethod();
-  const { data: databuyerNotes } = useBuyerNotes();
-
-  const CustomerDetailHeader = ({ title, withLogo = false }) => (
-    <div className={styles.customer_infoHeader}>
-      <div className={styles.customer_infoHeaderContainer}>
-        <h3 className={styles.customer_infoHeaderTitle}>{title}</h3>
-        {withLogo && <Info color="#767676" size="18" />}
-      </div>
-    </div>
-  );
+  const router = useRouter();
 
   return (
     <PrivateRouteWrapper>
@@ -174,7 +153,7 @@ const PaymentMethods: FC<any> = ({
                     <div
                       className={styles.payment_headingIcon}
                       onClick={() =>
-                        Router.push("/[lng]/products", `/${lng}/products`)
+                        router.push("/[lng]/products", `/${lng}/products`)
                       }
                     >
                       <ArrowLeft color="black" />
@@ -261,8 +240,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
 }) => {
   const brand = await useBrand(req);
-  const defaultLanguage =
-    brand?.settings?.defaultLanguage || params.lng || "id";
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || "id"
   const { default: lngDict = {} } = await import(
     `locales/${defaultLanguage}.json`
   );

@@ -1,7 +1,6 @@
 import {
   FC,
   useState,
-  useEffect
 } from "react";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
@@ -14,7 +13,6 @@ import {
 } from 'react-feather';
 
 const Popup = dynamic(() => import("../Popup/Popup"));
-const PopupCart = dynamic(() => import("../Popup/PopupCart"));
 const Search = dynamic(() => import("./Search"));
 const PrivateComponent = dynamic(() => import("@sirclo/nexus").then((mod) => mod.PrivateComponent));
 
@@ -28,12 +26,6 @@ const ProfileMenu: FC<any> = ({
   const i18n: any = useI18n();
 
   const [openSearch, setOpenSearch] = useState<boolean>(false);
-  const [openCart, setOpenCart] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (openCart) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'unset';
-  }, [openCart])
 
   const searchProduct = (val: any) => {
     if (val !== "" && typeof val !== "undefined") {
@@ -47,9 +39,7 @@ const ProfileMenu: FC<any> = ({
 
   const toogleSearch = () => setOpenSearch(!openSearch);
 
-  const toogleCart = () => {
-    if (router.pathname !== "/[lng]/payment_notif/[[...orderID]]") setOpenCart(!openCart);
-  }
+
 
   const classesSearch = {
     searchContainer: styles.search_container,

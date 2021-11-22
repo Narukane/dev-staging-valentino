@@ -1,39 +1,38 @@
 /* library package */
-import { FC, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
-import { parseCookies } from "lib/parseCookies";
-import Router from "next/router";
-import dynamic from "next/dynamic";
+import { FC, useState } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
+import { parseCookies } from 'lib/parseCookies'
+import Router from 'next/router'
 import {
   X as XIcon,
   Trash,
   ChevronDown,
   ChevronUp,
-} from "react-feather";
-import { toast } from "react-toastify";
+} from 'react-feather'
+import { toast } from 'react-toastify'
 import {
   CartDetails,
   OrderSummary,
   isProductRecommendationAllowed,
   Products,
   useI18n,
-} from "@sirclo/nexus";
+} from '@sirclo/nexus'
 
 /* library template */
-import { useBrand } from "lib/useBrand";
-import useWindowSize from "lib/useWindowSize";
+import { useBrand } from 'lib/useBrand'
+import useWindowSize from 'lib/useWindowSize'
 
 /* components */
-import Layout from "components/Layout/Layout";
-import EmptyComponent from "components/EmptyComponent/EmptyComponent";
-import Placeholder from "components/Placeholder";
+import Layout from 'components/Layout/Layout'
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
+import Placeholder from 'components/Placeholder'
+import Popup from 'components/Popup/Popup'
 
-const Popup = dynamic(() => import("components/Popup/Popup"));
-
-import styles from "public/scss/pages/Cart.module.scss";
-import stylesOrderSummary from "public/scss/components/OrderSummaryCart.module.scss";
-import stylesPagination from "public/scss/components/Pagination.module.scss";
+/* styles */
+import styles from 'public/scss/pages/Cart.module.scss'
+import stylesOrderSummary from 'public/scss/components/OrderSummaryCart.module.scss'
+import stylesPagination from 'public/scss/components/Pagination.module.scss'
 
 const classesCartDetails = {
   className: styles.cart,
@@ -370,8 +369,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const brand = await useBrand(req);
-  const defaultLanguage =
-    brand?.settings?.defaultLanguage || params.lng || "id";
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || "id"
   const { default: lngDict = {} } = await import(
     `locales/${defaultLanguage}.json`
   );

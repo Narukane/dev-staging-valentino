@@ -1,14 +1,21 @@
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useRouter } from "next/router";
-import { useI18n, usePaymentLink } from "@sirclo/nexus";
-import Layout from "components/Layout/Layout";
-import { useBrand } from "lib/useBrand";
+/* library Package */
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
+import { useI18n, usePaymentLink } from '@sirclo/nexus'
 import {
   AlertCircle,
   XCircle
-} from "react-feather";
-import styles from "public/scss/pages/PaymentStatus.module.scss";
+} from 'react-feather'
+
+/* library Template */
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import Layout from 'components/Layout/Layout'
+
+/* styles */
+import styles from 'public/scss/pages/PaymentStatus.module.scss'
 
 type TypePaymentStatus = {
   title?: string,

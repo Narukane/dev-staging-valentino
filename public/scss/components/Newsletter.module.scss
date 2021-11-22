@@ -30,12 +30,14 @@
     margin: 1rem;
     padding: 2rem 1.5rem;
     background: $color_white;
-    border-radius: 4px;
-    width: 500px;
-    height: 500px;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
     position: relative;
     transition: all .3s ease-in-out;
     overflow-y: auto;
+    display: flex;
+    align-items: center;
 
     h1,h2,h3,h4,h5,h6
     {
@@ -65,8 +67,14 @@
     top: .5rem;
     padding: 0;
     border: none;
-    background: none;
+    background: $color_base_red;
     color: $color_white;
+    border-radius: 360px;
+    padding: 3px;
+
+    & > svg {
+      stroke: $color_white;
+    }
 
     &:focus,
     &:active
@@ -88,5 +96,10 @@
   &_form
   {
     margin-top: 1rem;
+
+    & > button {
+      font-size: 13px !important;
+      padding : 10px 20px
+    }
   }
 }

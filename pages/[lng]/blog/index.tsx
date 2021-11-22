@@ -1,6 +1,6 @@
-import { FC, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import dynamic from "next/dynamic";
+/* library package */
+import { FC, useState } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   useI18n,
   Blogs,
@@ -8,17 +8,23 @@ import {
   getBlogHeaderImage,
   BlogRecent,
   isBlogAllowed
-} from "@sirclo/nexus";
-import useWindowSize from "lib/useWindowSize";
-import { useBrand } from "lib/useBrand";
-import Layout from "components/Layout/Layout";
-import { GRAPHQL_URI } from "components/Constants";
-import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
-import styles from "public/scss/pages/Blog.module.scss";
-import stylesPagination from "public/scss/components/Pagination.module.scss"
+} from '@sirclo/nexus'
 
-const EmptyComponent = dynamic(() => import("components/EmptyComponent/EmptyComponent"));
-const Placeholder = dynamic(() => import("components/Placeholder"));
+/* library template */
+import useWindowSize from 'lib/useWindowSize'
+import { useBrand } from 'lib/useBrand'
+
+/* components */
+import Layout from 'components/Layout/Layout'
+import { GRAPHQL_URI } from 'components/Constants'
+import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
+import Placeholder from 'components/Placeholder'
+
+/* styles */
+import styles from 'public/scss/pages/Blog.module.scss'
+import stylesPagination from 'public/scss/components/Pagination.module.scss'
+
 
 const classesBlogs = {
   blogsContainerClassName: `row ${styles.blog}`,

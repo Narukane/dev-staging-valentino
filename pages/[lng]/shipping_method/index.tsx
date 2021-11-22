@@ -1,56 +1,37 @@
-import { FC, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import Router from "next/router";
+/* library Package */
+import { FC, useState } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
 import {
-  CustomerDetail,
   ShippingMethods,
   CartSummary,
   useI18n,
   PrivateRoute,
-  useBuyerNotes,
-} from "@sirclo/nexus";
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import Footer from "components/Footer/Footer";
-import Breadcrumb from "components/Breadcrumb/Breadcrumb";
-import EmptyComponent from "components/EmptyComponent/EmptyComponent";
-import useWindowSize from "lib/useWindowSize";
-import { useBrand } from "lib/useBrand";
+} from '@sirclo/nexus'
 import {
   ArrowLeft,
-  ShoppingCart,
   X as XIcon,
   ChevronDown,
   ChevronUp,
-  Info,
   Crosshair,
-} from "react-feather";
-import { toast } from "react-toastify";
-import styles from "public/scss/pages/ShippingMethod.module.scss";
+} from 'react-feather'
+import { toast } from 'react-toastify'
 
-const Popup = dynamic(() => import("components/Popup/Popup"));
-const Placeholder = dynamic(() => import("components/Placeholder"));
-const LoaderPages = dynamic(() => import("components/Loader/LoaderPages"));
+/* library Template */
+import useWindowSize from 'lib/useWindowSize'
+import { useBrand } from 'lib/useBrand'
 
-const classesCustomerDetail = {
-  customerDetailBoxClass: styles.customer,
-  addressContainerClassName: styles.customer_info,
-  addressDetailClassName: styles.customer_infoPerson,
-  addressValueClassName: styles.customer_infoPersonValue,
-  changePinClassName: styles.customer_changePin,
-  mapPopupClassName: styles.customer_mapPopup,
-  mapPopupBackgroundClassName: styles.customer_mapPopupContainer,
-  mapClassName: styles.customer_mapPopupMaps,
-  mapHeaderWrapperClassName: styles.customer_mapPopupHeader,
-  mapHeaderTitleClassName: styles.customer_mapPopupHeaderTitle,
-  mapHeaderCloseButtonClassName: styles.customer_mapPopupClose,
-  mapHeaderNoteClassName: styles.customer_mapPopupNote,
-  mapLabelAddressClassName: styles.customer_mapPopupLabelAddress,
-  mapButtonFooterClassName: `btn ${styles.btn_primary} ${styles.btn_long} d-block mx-auto my-3`,
-  mapCenterButtonClassName: styles.customer_mapPopupCenterButton,
-};
+/* component */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
+import Placeholder from 'components/Placeholder'
+import Popup from 'components/Popup/Popup'
+import LoaderPages from 'components/Loader/LoaderPages'
+
+/* styles */
+import styles from 'public/scss/pages/ShippingMethod.module.scss'
 
 const classesShippingMethod = {
   containerClass: styles.shippingMethod_container,
@@ -163,10 +144,6 @@ const classesPlaceholderCartPlaceorder = {
   placeholderTitle: `${styles.placeholderItem} ${styles.placeholderItem_cartPlaceorderTitle}`,
 };
 
-const classesPlaceholderCustomerDetail = {
-  placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_customerDetail}`,
-};
-
 const classesPlaceholderShipping = {
   placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_shippingMethod}`,
 };
@@ -192,29 +169,14 @@ const ShippingMethodPage: FC<any> = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n();
   const size = useWindowSize();
-  const { data: databuyerNotes } = useBuyerNotes();
+  const router = useRouter();
 
   const [openOrderSummary, setOpenOrderSummary] = useState<boolean>(true);
-  const [showModalErrorAddToCart, setShowModalErrorAddToCart] =
-    useState<boolean>(false);
+  const [showModalErrorAddToCart, setShowModalErrorAddToCart] = useState<boolean>(false);
 
   const toogleOrderSummary = () => setOpenOrderSummary(!openOrderSummary);
-  const toogleErrorAddToCart = () =>
-    setShowModalErrorAddToCart(!showModalErrorAddToCart);
+  const toogleErrorAddToCart = () => setShowModalErrorAddToCart(!showModalErrorAddToCart);
 
-  const CustomerDetailHeader = ({ title }) => (
-    <div className={styles.customer_infoHeader}>
-      <div className={styles.customer_infoHeaderContainer}>
-        <h3 className={styles.customer_infoHeaderTitle}>{title}</h3>
-        <Info color="#767676" size="18" />
-      </div>
-      <Link href="/[lng]/place_order" as={`/${lng}/place_order`}>
-        <a className={styles.customer_infoHeaderLink}>
-          {i18n.t("shipping.change")}
-        </a>
-      </Link>
-    </div>
-  );
 
   return (
     <PrivateRouteWrapper>
@@ -252,9 +214,7 @@ const ShippingMethodPage: FC<any> = ({
                   <div className={styles.shipping_heading}>
                     <div
                       className={styles.shipping_headingIcon}
-                      onClick={() =>
-                        Router.push("/[lng]/products", `/${lng}/products`)
-                      }
+                      onClick={() => router.push("/[lng]/products", `/${lng}/products`)}
                     >
                       <ArrowLeft color="black" />
                     </div>
@@ -393,10 +353,8 @@ const ShippingMethodPage: FC<any> = ({
               <div className="col-12 col-md-6 col-lg-5 p-0">
                 <div className={styles.ordersummary}>
                   <div className={styles.ordersummary_heading}>
-                    {/* <ShoppingCart color="white" /> */}
                     <h6>{i18n.t("placeOrder.orderSummary")}</h6>
                   </div>
-                  {/* <hr className={styles.ordersummary_line} /> */}
                   <div className="container">
                     <div className="row">
                       <div className="col-12 col-md-12 col-lg-8">

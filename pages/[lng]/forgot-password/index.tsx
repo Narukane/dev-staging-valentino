@@ -1,14 +1,21 @@
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { ResetPassword, useI18n } from "@sirclo/nexus";
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import Loader from "components/Loader/Loader";
-import { parseCookies } from "lib/parseCookies";
-import redirectIfAuthenticated from "lib/redirectIfAuthenticated";
-import { useBrand } from "lib/useBrand";
-import { toast } from "react-toastify";
-import styles from "public/scss/pages/Login.module.scss";
+/* library Package */
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { ResetPassword, useI18n } from '@sirclo/nexus'
+import { toast } from 'react-toastify'
+
+/* library Template */
+import { parseCookies } from 'lib/parseCookies'
+import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import Loader from 'components/Loader/Loader'
+
+/* styles */
+import styles from 'public/scss/pages/Login.module.scss'
 
 const classesResetPassword = {
   containerClassName: `${styles.login_item} ${styles.login_item__form}`,
@@ -63,7 +70,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const brand = await useBrand(req);
   const defaultLanguage =
-    brand?.settings?.defaultLanguage || params.lng || "id";
+    brand?.settings?.defaultLanguage || params.lng || "id"
   const { default: lngDict = {} } = await import(
     `locales/${defaultLanguage}.json`
   );

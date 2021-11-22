@@ -1,16 +1,20 @@
-import { FC, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-import { BlogSingle, BlogCategories, useI18n, getBlogHeaderImage } from "@sirclo/nexus";
-import Layout from "components/Layout/Layout";
-import { useBrand } from "lib/useBrand";
-import styles from "public/scss/pages/Blog.module.scss";
-import Breadcrumb from "components/Breadcrumb/Breadcrumblink";
-import { GRAPHQL_URI } from "components/Constants";
+/* library package */
+import { FC, useState } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
+import { BlogSingle, useI18n } from '@sirclo/nexus'
 
-const Popup = dynamic(() => import("components/Popup/Popup"));
-const SocialShare = dynamic(() => import("components/SocialShare"));
+/* library template */
+import { useBrand } from 'lib/useBrand'
+
+/* components */
+import Layout from 'components/Layout/Layout'
+import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
+import Popup from 'components/Popup/Popup'
+import SocialShare from 'components/SocialShare'
+
+/* styles */
+import styles from 'public/scss/pages/Blog.module.scss'
 
 const classesBlogSingle = {
   blogContainerClassName: styles.blog_detail,
@@ -98,8 +102,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const { slug } = params;
   const brand = await useBrand(req);
-  const defaultLanguage =
-    brand?.settings?.defaultLanguage || params.lng || "id";
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || "id"
   const { default: lngDict = {} } = await import(
     `locales/${defaultLanguage}.json`
   );

@@ -26,7 +26,7 @@ const classesNewsletterPopup = {
   formContainerClassName: styles.newsletter_form,
   labelClassName: "d-none",
   inputClassName: "form-control",
-  buttonClassName: `btn mt-3 ${styles.btn_blue} ${styles.btn_center}`,
+  buttonClassName: `btn mt-3 ${styles.btn_primary} ${styles.btn_center}`,
 }
 
 const Layout: React.FC<LayoutPropType> = ({

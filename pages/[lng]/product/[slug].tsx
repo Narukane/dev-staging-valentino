@@ -1,8 +1,8 @@
-import { FC, useState, useEffect } from "react";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
-import { toast } from "react-toastify";
-import dynamic from "next/dynamic";
-import Router from "next/router";
+/* library Package */
+import { FC, useState} from 'react'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/router'
 import {
   useI18n,
   ProductDetail,
@@ -10,13 +10,7 @@ import {
   getProductDetail,
   Products,
   isProductRecommendationAllowed,
-} from "@sirclo/nexus";
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import Placeholder from "components/Placeholder";
-import { GRAPHQL_URI } from "components/Constants";
-import useWindowSize from "lib/useWindowSize";
-import { useBrand } from "lib/useBrand";
+} from '@sirclo/nexus'
 import {
   ChevronLeft,
   ChevronRight,
@@ -27,17 +21,25 @@ import {
   Share2,
   Bell,
   X as XIcon,
-} from "react-feather";
-import styles from "public/scss/pages/ProductDetail.module.scss";
-import stylesEstimate from "public/scss/components/EstimateShipping.module.scss";
-import Breadcrumblink from "components/Breadcrumb/Breadcrumblink";
+} from 'react-feather'
 
-const EmptyComponent = dynamic(
-  () => import("components/EmptyComponent/EmptyComponent")
-);
-const Popup = dynamic(() => import("components/Popup/Popup"));
-const PopupCart = dynamic(() => import("components/Popup/PopupCart"));
-const SocialShare = dynamic(() => import("components/SocialShare"));
+/* library Template */
+import useWindowSize from 'lib/useWindowSize'
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import Placeholder from 'components/Placeholder'
+import { GRAPHQL_URI } from 'components/Constants'
+import Breadcrumblink from 'components/Breadcrumb/Breadcrumblink'
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
+import Popup from 'components/Popup/Popup'
+import SocialShare from 'components/SocialShare'
+
+/* styles */
+import styles from 'public/scss/pages/ProductDetail.module.scss'
+import stylesEstimate from 'public/scss/components/EstimateShipping.module.scss'
 
 const classesProductDetail = {
   productDetailParentDivClassName: styles.productdetail,
@@ -185,12 +187,10 @@ const classesPlaceholderRelateProduct = {
 const Product: FC<any> = ({ lng, lngDict, slug, data, brand, urlSite }) => {
   const i18n: any = useI18n();
   const size = useWindowSize();
-
-  console.log(data)
+  const router = useRouter();
 
   const [productId, setProductId] = useState(null);
   const [showPopup, setShowPopup] = useState<boolean>(false);
-  const [showCart, setShowCart] = useState<boolean>(false);
   const [showShare, setShowShare] = useState<boolean>(false);
   const [showPopupNotify, setShowPopupNotify] = useState<boolean>(false);
   const [showModalErrorAddToCart, setShowModalErrorAddToCart] =
@@ -205,16 +205,10 @@ const Product: FC<any> = ({ lng, lngDict, slug, data, brand, urlSite }) => {
     `${data.details[0].name}`
   ];
 
-  useEffect(() => {
-    if (showCart) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "unset";
-  }, [showCart]);
-
   const allowedProductRecommendation = isProductRecommendationAllowed();
   const toogleErrorAddToCart = () =>
     setShowModalErrorAddToCart(!showModalErrorAddToCart);
   const tooglePopup = () => setShowPopup(!showPopup);
-  const toogleCart = () => setShowCart(!showCart);
   const toogleShare = () => setShowShare(!showShare);
 
   // IS PROD VARIABLE
@@ -244,7 +238,7 @@ const Product: FC<any> = ({ lng, lngDict, slug, data, brand, urlSite }) => {
                 className={`btn ${styles.btn_primary} ${styles.btn_long} ${styles.btn_full_width} mb-3`}
                 onClick={() => {
                   setShowPopup(false);
-                  setShowCart(true);
+                  router.push("/[lng]/cart", `/${lng}/cart`)
                 }}
               >
                 {i18n.t("product.viewCart")}
@@ -254,7 +248,7 @@ const Product: FC<any> = ({ lng, lngDict, slug, data, brand, urlSite }) => {
               <button
                 className={`btn ${styles.btn_blue}`}
                 onClick={() =>
-                  Router.push("/[lng]/products", `/${lng}/products`)
+                  router.push("/[lng]/products", `/${lng}/products`)
                 }
               >
                 {i18n.t("product.continueShopping")}
@@ -262,13 +256,6 @@ const Product: FC<any> = ({ lng, lngDict, slug, data, brand, urlSite }) => {
             </div>
           </div>
         </Popup>
-      )}
-      {showCart && (
-        <PopupCart
-          setPopup={toogleCart}
-          popupTitle={i18n.t("cart.title")}
-          lng={lng}
-        />
       )}
       {showModalErrorAddToCart && (
         <Popup
@@ -318,7 +305,7 @@ const Product: FC<any> = ({ lng, lngDict, slug, data, brand, urlSite }) => {
               className={`btn mt-3 ${styles.btn_secondary}`}
               onClick={() => {
                 setShowPopupNotify(false);
-                Router.push("/[lng]/products", `/${lng}/products`);
+                router.push("/[lng]/products", `/${lng}/products`);
               }}
             >
               {i18n.t("product.continueShopping")}
@@ -364,7 +351,7 @@ const Product: FC<any> = ({ lng, lngDict, slug, data, brand, urlSite }) => {
                   <button
                     className={`btn mt-2 ${styles.btn_primary} ${styles.btn_long}`}
                     onClick={() =>
-                      Router.push(`/[lng]/products`, `/${lng}/products`)
+                      router.push(`/[lng]/products`, `/${lng}/products`)
                     }
                   >
                     {i18n.t("product.back")}
@@ -556,8 +543,7 @@ export async function getServerSideProps({ req, params }) {
   const { slug } = params;
   const data = await getProductDetail(GRAPHQL_URI(req), slug);
   const brand = await useBrand(req);
-  const defaultLanguage =
-    brand?.settings?.defaultLanguage || params.lng || "id";
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || "id"
   const { default: lngDict = {} } = await import(
     `locales/${defaultLanguage}.json`
   );

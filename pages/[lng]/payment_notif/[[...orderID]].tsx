@@ -1,21 +1,29 @@
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useRouter } from "next/router";
-import { PaymentConfirmation, CheckPaymentOrder, useI18n } from "@sirclo/nexus";
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import Loader from "components/Loader/Loader";
-import BankAccount from "components/BankAccount/BankAccount";
-import { useBrand } from "lib/useBrand";
-import { toast } from "react-toastify";
-import styles from "public/scss/pages/PaymentNotif.module.scss";
-import stylesPopup from "public/scss/components/CheckPaymentOrder.module.scss";
-import stylesBanks from "public/scss/components/BanksAccount.module.scss";
+/* library Package */
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
+import { PaymentConfirmation, CheckPaymentOrder, useI18n } from '@sirclo/nexus'
+import { toast } from 'react-toastify'
 import {
   ChevronUp,
   ChevronDown,
   X,
-} from "react-feather";
+} from 'react-feather'
+
+/* library Template */
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import Loader from 'components/Loader/Loader'
+import BankAccount from 'components/BankAccount/BankAccount'
+
+/* styles */
+import styles from 'public/scss/pages/PaymentNotif.module.scss'
+import stylesPopup from 'public/scss/components/CheckPaymentOrder.module.scss'
+import stylesBanks from 'public/scss/components/BanksAccount.module.scss'
+
 
 const classesPaymentConfirmation = {
   paymentConfirmationDivClassName: styles.paymentNotif_form,
@@ -114,7 +122,6 @@ const PaymentConfirmationPage: FC<any> = ({
                   onSuccessMsg={(msg) => toast.success(msg)}
                   loadingComponent={<Loader color="text-light" />}
                   withOrderDetails
-                  // children={}
                   thumborSetting={{
                     width: 40,
                     format: "webp",

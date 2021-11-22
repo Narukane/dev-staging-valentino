@@ -1,31 +1,31 @@
 /* library Package */
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   Banner,
   getBanner,
   Products,
   useI18n,
   Widget,
-} from "@sirclo/nexus";
+} from '@sirclo/nexus'
 import { useRouter } from 'next/router'
-import Carousel from "@brainhubeu/react-carousel";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
+import Carousel from '@brainhubeu/react-carousel'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 
 /* library Template */
-import useWindowSize from "lib/useWindowSize";
-import { parseCookies } from "lib/parseCookies";
-import { useSizeBanner } from "lib/useSizeBanner";
-import { GRAPHQL_URI } from "lib/Constants";
-import { useBrand } from "lib/useBrand";
+import useWindowSize from 'lib/useWindowSize'
+import { parseCookies } from 'lib/parseCookies'
+import { useSizeBanner } from 'lib/useSizeBanner'
+import { GRAPHQL_URI } from 'lib/Constants'
+import { useBrand } from 'lib/useBrand'
 
 /* component */
-import Layout from "components/Layout/Layout";
-import Placeholder from "components/Placeholder";
-import InstagramFeed from "components/InstagramFeed/InstagramFeed";
+import Layout from 'components/Layout/Layout'
+import Placeholder from 'components/Placeholder'
+import InstagramFeed from 'components/InstagramFeed/InstagramFeed'
 
 /* styles */
-import styles from "public/scss/pages/Home.module.scss";
+import styles from 'public/scss/pages/Home.module.scss'
 
 const classesBanner = {
   imageContainerClassName: styles.bannerCarousel_header,

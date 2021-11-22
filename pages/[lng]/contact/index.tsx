@@ -1,19 +1,25 @@
-import { FC } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import dynamic from "next/dynamic";
+/* library Package */
+import { FC } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   useI18n,
   Contact,
   Widget,
   isEnquiryAllowed
-} from "@sirclo/nexus";
-import Layout from "components/Layout/Layout";
-import { useBrand } from "lib/useBrand";
-import { toast } from "react-toastify";
-import styles from "public/scss/pages/Contact.module.scss";
-import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
+} from '@sirclo/nexus'
+import { toast } from 'react-toastify'
 
-const Placeholder = dynamic(() => import("components/Placeholder"));
+/* library Template */
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import Breadcrumb from 'components/Breadcrumb/Breadcrumblink'
+import Placeholder from 'components/Placeholder'
+import Layout from 'components/Layout/Layout'
+
+/* styles */
+import styles from 'public/scss/pages/Contact.module.scss'
+
 
 const classesContact = {
   containerClassName: `${styles.contact_container} d-flex flex-column align-items-start justify-content-start`,

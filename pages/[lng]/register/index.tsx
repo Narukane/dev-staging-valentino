@@ -1,9 +1,10 @@
-import { FC, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { toast } from "react-toastify";
-import ReCAPTCHA from "react-google-recaptcha";
+/* library Package */
+import { FC, useState } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import { toast } from 'react-toastify'
+import ReCAPTCHA from 'react-google-recaptcha'
 import {
   Eye,
   EyeOff,
@@ -12,24 +13,30 @@ import {
   Mail,
   User,
   ArrowLeft,
-} from "react-feather";
+} from 'react-feather'
 import {
   Register,
   useI18n,
   SingleSignOn,
   WhatsAppOTPInput,
-} from "@sirclo/nexus";
-import { parseCookies } from "lib/parseCookies";
-import redirectIfAuthenticated from "lib/redirectIfAuthenticated";
-import { useBrand } from "lib/useBrand";
-import { useGoogleAuth } from "lib/useGoogleAuth";
-import { useFacebookAuth } from "lib/useFacebookAuth";
-import { useWhatsAppOTPSetting } from "lib/useWhatsappOtp";
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import Loader from "components/Loader/Loader";
-import LoaderPages from "components/Loader/LoaderPages";
-import styles from "public/scss/pages/LoginRegister.module.scss";
+} from '@sirclo/nexus'
+
+/* library Template */
+import { parseCookies } from 'lib/parseCookies'
+import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
+import { useBrand } from 'lib/useBrand'
+import { useGoogleAuth } from 'lib/useGoogleAuth'
+import { useFacebookAuth } from 'lib/useFacebookAuth'
+import { useWhatsAppOTPSetting } from 'lib/useWhatsappOtp'
+
+/* component */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import Loader from 'components/Loader/Loader'
+import LoaderPages from 'components/Loader/LoaderPages'
+
+/* styles */
+import styles from 'public/scss/pages/LoginRegister.module.scss'
 
 const classesRegister = {
   containerClassName: `${styles.login_item} ${styles.login_item__form}`,

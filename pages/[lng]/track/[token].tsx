@@ -1,6 +1,13 @@
-import { ShipmentTracker } from "@sirclo/nexus";
-import { useBrand } from "lib/useBrand";
-import styles from "public/scss/pages/Track.module.scss";
+/* library Package */
+import { ShipmentTracker } from '@sirclo/nexus'
+
+/* library Template */
+import { useBrand } from 'lib/useBrand'
+
+/* styles */
+import styles from 'public/scss/pages/Track.module.scss'
+
+
 
 const classesTrackerPage = {
   shipmentHeaderClassName: `${styles.track_shipmentHeader} ${styles.track_shipmentHeaderGuest}`,
@@ -19,7 +26,9 @@ const classesTrackerPage = {
 const TrackerPage = ({ order_token }) => {
   return (
     <ShipmentTracker
-      token={order_token}
+
+      awbNumber={"IN-SB-2-C2VTGFMAA2XUME"}
+      shippingProvider="GRAB"
       iconTracker={
         <img
           className="mr-2"
@@ -29,6 +38,7 @@ const TrackerPage = ({ order_token }) => {
       }
       classes={classesTrackerPage}
     />
+
   );
 };
 

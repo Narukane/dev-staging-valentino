@@ -1,22 +1,27 @@
-import { FC, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Router from "next/router";
-import dynamic from "next/dynamic";
-import { toast } from "react-toastify";
+/* library Package */
+import { FC, useState } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Router from 'next/router'
+import { toast } from 'react-toastify'
 import {
   useI18n,
   Testimonials,
   isTestimonialAllowed,
   isTestimonialFormAllowed,
   TestimonialForm
-} from "@sirclo/nexus";
-import { useBrand } from "lib/useBrand";
-import ReCAPTCHA from "react-google-recaptcha"
-import Layout from "components/Layout/Layout";
-import Placeholder from "components/Placeholder";
-import styles from "public/scss/pages/Testimonials.module.scss";
+} from '@sirclo/nexus'
+import ReCAPTCHA from 'react-google-recaptcha'
 
-const Popup = dynamic(() => import("components/Popup/Popup"));
+/* library Template */
+import { useBrand } from 'lib/useBrand'
+
+/* component */
+import Layout from 'components/Layout/Layout'
+import Placeholder from 'components/Placeholder'
+import Popup from 'components/Popup/Popup'
+
+/* styles */
+import styles from 'public/scss/pages/Testimonials.module.scss'
 
 const classesTestimonials = {
   containerClassName: `${styles.testimonials_container}`,

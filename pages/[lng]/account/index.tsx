@@ -1,13 +1,8 @@
-import { FC, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { Account, useI18n, useLogout } from "@sirclo/nexus";
-import { toast } from "react-toastify";
-import SEO from "components/SEO";
-import Layout from "components/Layout/Layout";
-import Loader from "components/Loader/Loader";
-import { parseCookies } from "lib/parseCookies";
-import { useBrand } from "lib/useBrand";
-import { useWhatsAppOTPSetting } from "lib/useWhatsappOtp";
+/* library package */
+import { FC, useState } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { Account, useI18n, useLogout } from '@sirclo/nexus'
+import { toast } from 'react-toastify'
 import {
   X as XIcon,
   AlertCircle,
@@ -19,15 +14,27 @@ import {
   ChevronDown,
   Mail,
   ChevronUp,
-} from "react-feather";
-import styles from "public/scss/pages/Account.module.scss";
-import stylesPopupConfirmationOrder from "public/scss/components/popupConfirmationOrder.module.scss";
-import stylesPopupCheckPaymentOrder from "public/scss/components/CheckPaymentOrder.module.scss";
-import stylesNotif from "public/scss/components/Notification.module.scss";
-import stylesPagination from "public/scss/components/Pagination.module.scss"
-import Breadcrumblink from "components/Breadcrumb/Breadcrumblink";
+} from 'react-feather'
 
-const ACTIVE_CURRENCY = "IDR";
+/* library template */
+import { parseCookies } from 'lib/parseCookies'
+import { useBrand } from 'lib/useBrand'
+import { useWhatsAppOTPSetting } from 'lib/useWhatsappOtp'
+
+/* components */
+import SEO from 'components/SEO'
+import Layout from 'components/Layout/Layout'
+import Loader from 'components/Loader/Loader'
+import Breadcrumblink from 'components/Breadcrumb/Breadcrumblink'
+
+/* styles */
+import styles from 'public/scss/pages/Account.module.scss'
+import stylesPopupConfirmationOrder from 'public/scss/components/popupConfirmationOrder.module.scss'
+import stylesPopupCheckPaymentOrder from 'public/scss/components/CheckPaymentOrder.module.scss'
+import stylesNotif from 'public/scss/components/Notification.module.scss'
+import stylesPagination from 'public/scss/components/Pagination.module.scss'
+
+const ACTIVE_CURRENCY = 'IDR'
 
 const classesAccount = {
   containerClassName: styles.account,
@@ -308,11 +315,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const brand = await useBrand(req);
   const cookies = parseCookies(req);
-  const defaultLanguage =
-    brand?.settings?.defaultLanguage ||
-    params.lng ||
-    cookies.ACTIVE_LNG ||
-    "id";
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || cookies.ACTIVE_LNG || "id"
   const hasOtp = await useWhatsAppOTPSetting(req);
   const { default: lngDict = {} } = await import(
     `locales/${defaultLanguage}.json`
