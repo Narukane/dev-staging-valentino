@@ -4,6 +4,11 @@
 {
   min-height: 58vh;
 
+  & > img {
+    width: 100% !important;
+    height: auto;
+  }
+
   @media screen and (max-width: 575px) {
     min-height: 40vh;
   }
