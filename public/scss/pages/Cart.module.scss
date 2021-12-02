@@ -3,38 +3,60 @@
 @import "../components/Form.module.scss";
 @import "../components/Placeholder.module.scss";
 @import "../pages/ProductDetail.module.scss";
-@import '../components/CartDetail.module.scss';
-@import '../components/OrderSummary.module.scss';
-@import '../utils/_scrollbar.scss';
+@import "../components/CartDetail.module.scss";
+@import "../components/OrderSummaryCart2.module.scss";
+@import "../utils/_scrollbar.scss";
 
-.cart
-{
+.cart {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
-  margin-top: 19px;
+  margin-top: 20px;
+  margin-bottom: 3rem;
 
-  &_empty{
+  &_section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 40px;
+    margin-top: 20px;
+  }
+
+  &_notready{
+    font-size: 16px;
+    font-weight: 500;
+
+    &_shopnow{
+      font-size: 16px;
+      font-weight: 500;
+      margin-left: 10px;
+      color : #E89F71;
+      cursor: pointer;
+    }
+  }
+
+  &_empty {
     margin-top: 3rem;
     justify-content: center;
     margin-bottom: 3rem;
+    align-self: center;
 
     & > button {
       padding: 10px !important;
       font-size: 16px !important;
       border-radius: 10px !important;
-      font-family: 'Poppins';
+      font-family: "Poppins";
       background-color: $color_base_red;
     }
   }
 
-  &_emptyTitle{
+  &_emptyTitle {
     font-size: 14px;
   }
 
-  h3
-  {
+  h3 {
     margin-bottom: 24px;
     font-family: "Poppins-medium";
     font-weight: 500;
@@ -42,86 +64,70 @@
     line-height: 150%;
   }
 
-  &_container
-  {
-    width: 30vw;
+  &_container {
+    padding : 40px;
+    margin-top: 20px;
   }
 
-  &_crossSellPaggination
-  {
+  &_crossSellPaggination {
     position: absolute;
     top: 15px;
     right: 11px;
   }
 
-  &_crossSellPagginationItem
-  {
+  &_crossSellPagginationItem {
     background-color: transparent;
     border: 0;
   }
 
-  &_crossSell
-  {
+  &_crossSell {
     position: relative;
   }
 
-  &_crossSellHeader
-  {
+  &_crossSellHeader {
     margin: 18px 0;
   }
 
-  &_crossSellTitle
-  {
+  &_crossSellTitle {
     font-family: "Poppins-medium";
     font-size: 16px;
     line-height: 16px;
   }
 
-  &_cartFooter
-  {
+  &_cartFooter {
     margin-top: 18px;
   }
 
-  [class*="cartBodyClassName"]
-  {
+  [class*="cartBodyClassName"] {
     max-height: 400px;
     overflow-y: auto;
     @extend .scrollbar_main;
   }
 }
 
-.ordersummary
-{
-  &_expanded
-  {
-    span
-    {
+.ordersummary {
+  &_expanded {
+    span {
       color: $color_black !important;
     }
   }
 
   &_expandedPrice,
-  &_expandedLabel
-  {
+  &_expandedLabel {
     font-weight: normal;
     font-size: 14px;
     line-height: 22px;
   }
-  &_expandedButton
-  {
-    &::before
-    {
+  &_expandedButton {
+    &::before {
       background-color: $color_blue !important;
     }
   }
 }
 
-@media screen and (max-width: 575px) 
-{
-  .cart
-  {
-    &_container
-    {
+@media screen and (max-width: 575px) {
+  .cart {
+    &_container {
       width: 100%;
       padding: 0 1rem;
     }

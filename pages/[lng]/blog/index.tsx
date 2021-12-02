@@ -137,6 +137,9 @@ const Blog: FC<any> = ({
                     <EmptyComponent
                       classes={classesEmptyComponent}
                       title={i18n.t("blog.isEmpty")}
+                      logo={
+                        <img className={styles.lookbook__emptyIcon} src="/icon/emptyIconBlog.svg" />
+                      }
                     />
                   }
                 />

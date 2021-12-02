@@ -96,7 +96,8 @@
     "title": "Keranjang",
     "unknownSKU": "SKU tidak diketahui",
     "unpublishedProduct": "Produk tidak diterbitkan",
-    "writeNoteToSeller": "Tulis catatan untuk penjual"
+    "writeNoteToSeller": "Tulis catatan untuk penjual",
+    "notready": "Masih ingin belanja ?"
   },
   "categories": {
     "categories": "Kategori"

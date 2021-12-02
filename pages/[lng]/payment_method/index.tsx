@@ -2,12 +2,15 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
+import Link from "next/link";
 import {
   ListPaymentMethod,
   PrivateRoute,
   useI18n,
+  CustomerDetail,
+  useBuyerNotes
 } from '@sirclo/nexus'
-import { ArrowLeft, X as XIcon } from 'react-feather'
+import { ArrowLeft, X as XIcon, Info } from 'react-feather'
 import { toast } from 'react-toastify'
 
 /* library Template */
@@ -26,6 +29,24 @@ import Placeholder from 'components/Placeholder'
 /* styles */
 import styles from 'public/scss/pages/PaymentMethod.module.scss'
 import stylesOptIn from 'public/scss/components/OptIn.module.scss'
+
+const classesCustomerDetail = {
+  customerDetailBoxClass: styles.customer,
+  addressContainerClassName: styles.customer_info,
+  addressDetailClassName: styles.customer_infoPerson,
+  addressValueClassName: styles.customer_infoPersonValue,
+  changePinClassName: styles.customer_changePin,
+  mapPopupClassName: styles.customer_mapPopup,
+  mapPopupBackgroundClassName: styles.customer_mapPopupContainer,
+  mapClassName: styles.customer_mapPopupMaps,
+  mapHeaderWrapperClassName: styles.customer_mapPopupHeader,
+  mapHeaderTitleClassName: styles.customer_mapPopupHeaderTitle,
+  mapHeaderCloseButtonClassName: styles.customer_mapPopupClose,
+  mapHeaderNoteClassName: styles.customer_mapPopupNote,
+  mapLabelAddressClassName: styles.customer_mapPopupLabelAddress,
+  mapButtonFooterClassName: `btn ${styles.btn_primary} ${styles.btn_long} d-block mx-auto my-3`,
+  mapCenterButtonClassName: styles.customer_mapPopupCenterButton
+};
 
 const classesListPaymentMethod = {
   listPaymentDivClassName: "container",
@@ -114,6 +135,10 @@ const classesPlaceholderPayment = {
   placeholderList: `${styles.placeholderItem} ${styles.placeholderItem_paymentMethod}`,
 };
 
+const classesPlaceholderCustomerDetail = {
+  placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_customerDetail}`,
+}
+
 type PrivateComponentPropsType = {
   children: any;
 };
@@ -132,6 +157,21 @@ const PaymentMethods: FC<any> = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n();
   const router = useRouter();
+  const { data: databuyerNotes} = useBuyerNotes();
+
+  const CustomerDetailHeader = ({ title, linkTo, withLogo = false }) => (
+    <div className={styles.customer_infoHeader}>
+      <div className={styles.customer_infoHeaderContainer}>
+        <h3 className={styles.customer_infoHeaderTitle}>{title}</h3>
+        {withLogo &&
+          <Info color="#767676" size="18" />
+        }
+      </div>
+      <Link href={`/[lng]/${linkTo}`} as={`/${lng}/${linkTo}`}>
+        <a className={styles.customer_infoHeaderLink}>{i18n.t("shipping.change")}</a>
+      </Link>
+    </div>
+  )
 
   return (
     <PrivateRouteWrapper>
@@ -169,11 +209,49 @@ const PaymentMethods: FC<any> = ({
                       </div>
                     </div>
                     <div className="col-12 col-md-12 col-lg-6 offset-lg-3">
-                      
+                    <CustomerDetail
+                        classes={classesCustomerDetail}
+                        isBilling={true}
+                        contactInfoHeader={
+                          <CustomerDetailHeader
+                            title={i18n.t("shipping.contactInfo")}
+                            linkTo="place_order"
+                            withLogo
+                          />
+                        }
+                        loadingComponent={
+                          <Placeholder classes={classesPlaceholderCustomerDetail} withImage />
+                        }
+                      />
+                      <CustomerDetail
+                        classes={classesCustomerDetail}
+                        isBilling={false}
+                        shippingInfoHeader={
+                          <CustomerDetailHeader
+                            title={i18n.t("shipping.shipTo")}
+                            linkTo="place_order"
+                            withLogo
+                          />
+                        }
+                        loadingComponent={
+                          <Placeholder classes={classesPlaceholderCustomerDetail} withImage />
+                        }
+                      />
+                      <div className={`${styles.notes}`}>
+                        <h3>{i18n.t("placeOrder.notes")}</h3>
+                        <Link href="/[lng]/cart" as={`/${lng}/cart`}>
+                            <a className={styles.notes_change}>
+                              {i18n.t("shipping.change")}
+                            </a>
+                          </Link>
+                        <div className={`${styles.notes_box}`}>
+                          {databuyerNotes?.buyerNotes?.buyerNotes || i18n.t("global.notesEmpty")}
+                        </div>
+                      </div>
                       <div className={styles.payment_list}>
-                        {/* <h3 className={styles.payment_listTitle}>
+                        <h3 className={styles.payment_listTitle}>
                           {i18n.t("payment.title")}
-                        </h3> */}
+                        </h3>
                         <ListPaymentMethod
                           classes={classesListPaymentMethod}
                           withNotificationOptInModal={hasOtp}

@@ -6,7 +6,6 @@
   &_information
   {
     border-radius: 3px;
-    padding: 10px;
     text-align: justify;
     margin: 24px 0px 24px 0px;
   }
@@ -17,7 +16,7 @@
   }
   &_header
   {
-    padding: 12px;
+    padding: 10px 0px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $color_blue_light;
@@ -33,7 +32,7 @@
   }
   &_body
   {
-    padding: 12px;
+    padding: 10px 0px;
   }
   &_name {
     color: $color_base_dark_blue;
@@ -51,7 +50,7 @@
     align-items: center;
     justify-content: space-between;
     display: flex;
-    padding: 12px;
+    padding: 10px 0px;
     background: $color_white;
   }
   &_buttonIcon

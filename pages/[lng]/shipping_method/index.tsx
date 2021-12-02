@@ -2,11 +2,14 @@
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
+import Link from "next/link";
 import {
   ShippingMethods,
   CartSummary,
   useI18n,
   PrivateRoute,
+  CustomerDetail,
+  useBuyerNotes
 } from '@sirclo/nexus'
 import {
   ArrowLeft,
@@ -14,6 +17,7 @@ import {
   ChevronDown,
   ChevronUp,
   Crosshair,
+  Info
 } from 'react-feather'
 import { toast } from 'react-toastify'
 
@@ -32,6 +36,24 @@ import LoaderPages from 'components/Loader/LoaderPages'
 
 /* styles */
 import styles from 'public/scss/pages/ShippingMethod.module.scss'
+
+const classesCustomerDetail = {
+  customerDetailBoxClass: styles.customer,
+  addressContainerClassName: styles.customer_info,
+  addressDetailClassName: styles.customer_infoPerson,
+  addressValueClassName: styles.customer_infoPersonValue,
+  changePinClassName: styles.customer_changePin,
+  mapPopupClassName: styles.customer_mapPopup,
+  mapPopupBackgroundClassName: styles.customer_mapPopupContainer,
+  mapClassName: styles.customer_mapPopupMaps,
+  mapHeaderWrapperClassName: styles.customer_mapPopupHeader,
+  mapHeaderTitleClassName: styles.customer_mapPopupHeaderTitle,
+  mapHeaderCloseButtonClassName: styles.customer_mapPopupClose,
+  mapHeaderNoteClassName: styles.customer_mapPopupNote,
+  mapLabelAddressClassName: styles.customer_mapPopupLabelAddress,
+  mapButtonFooterClassName: `btn ${styles.btn_primary} ${styles.btn_long} d-block mx-auto my-3`,
+  mapCenterButtonClassName: styles.customer_mapPopupCenterButton
+};
 
 const classesShippingMethod = {
   containerClass: styles.shippingMethod_container,
@@ -98,8 +120,7 @@ const classesOrderSummary = {
   voucherDetailTitleClassName: styles.summarycart_popupVoucherDetailTitle,
   voucherDetailDescClassName: styles.summarycart_popupVoucherDetailDesc,
   voucherDetailEstimateClassName: styles.summarycart_popupVoucherDetailEstimate,
-  voucherDetailEstimateDescClassName:
-    styles.summarycart_popupVoucherDetailEstimateDesc,
+  voucherDetailEstimateDescClassName: styles.summarycart_popupVoucherDetailEstimateDesc,
   //point
   pointsContainerClassName: styles.ordersummary_popup,
   pointsButtonAppliedClassName: styles.ordersummary_pointsButtonApplied,
@@ -139,6 +160,10 @@ const classesEmptyComponent = {
   emptyTitle: styles.cart__empty__title,
 };
 
+const classesPlaceholderCustomerDetail = {
+  placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_customerDetail}`,
+}
+
 const classesPlaceholderCartPlaceorder = {
   placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_cartPlaceorder}`,
   placeholderTitle: `${styles.placeholderItem} ${styles.placeholderItem_cartPlaceorderTitle}`,
@@ -170,12 +195,25 @@ const ShippingMethodPage: FC<any> = ({
   const i18n: any = useI18n();
   const size = useWindowSize();
   const router = useRouter();
+  const { data: databuyerNotes} = useBuyerNotes();
 
   const [openOrderSummary, setOpenOrderSummary] = useState<boolean>(true);
   const [showModalErrorAddToCart, setShowModalErrorAddToCart] = useState<boolean>(false);
 
   const toogleOrderSummary = () => setOpenOrderSummary(!openOrderSummary);
   const toogleErrorAddToCart = () => setShowModalErrorAddToCart(!showModalErrorAddToCart);
+
+  const CustomerDetailHeader = ({ title }) => (
+    <div className={styles.customer_infoHeader}>
+      <div className={styles.customer_infoHeaderContainer}>
+        <h3 className={styles.customer_infoHeaderTitle}>{title}</h3>
+        <Info color="#767676" size="18" />
+      </div>
+      <Link href="/[lng]/place_order" as={`/${lng}/place_order`}>
+        <a className={styles.customer_infoHeaderLink}>{i18n.t("shipping.change")}</a>
+      </Link>
+    </div>
+  )
 
 
   return (
@@ -282,9 +320,7 @@ const ShippingMethodPage: FC<any> = ({
                               isAccordion: true,
                               page: "shipping_method",
                               currency: "IDR",
-                              submitButtonLabel: i18n.t(
-                                "orderSummary.toPayment"
-                              ),
+                              submitButtonLabel: i18n.t("orderSummary.toPayment"),
                               onErrorMsg: () =>
                                 setShowModalErrorAddToCart(true),
                               onErrorMsgCoupon: (msg) => toast.error(msg),
@@ -330,7 +366,43 @@ const ShippingMethodPage: FC<any> = ({
                       </div>
                     )}
                     <div className="col-12 col-md-12 col-lg-8 offset-lg-2 mt-4">
+                    <CustomerDetail
+                        classes={classesCustomerDetail}
+                        isBilling={true}
+                        contactInfoHeader={
+                          <CustomerDetailHeader
+                            title={i18n.t("shipping.contactInfo")}
+                          />
+                        }
+                        loadingComponent={
+                          <Placeholder classes={classesPlaceholderCustomerDetail} withImage />
+                        }
+                      />
+                      <CustomerDetail
+                        classes={classesCustomerDetail}
+                        isBilling={false}
+                        shippingInfoHeader={
+                          <CustomerDetailHeader
+                            title={i18n.t("shipping.shipTo")}
+                          />
+                        }
+                        loadingComponent={
+                          <Placeholder classes={classesPlaceholderCustomerDetail} withImage />
+                        }
+                      />
+                      <div className={`${styles.notes}`}>
+                        <h3>{i18n.t("placeOrder.notes")}</h3>
+                        <Link href="/[lng]/cart" as={`/${lng}/cart`}>
+                            <a className={styles.notes_change}>
+                              {i18n.t("shipping.change")}
+                            </a>
+                          </Link>
+                        <div className={`${styles.notes_box}`}>
+                          {databuyerNotes?.buyerNotes?.buyerNotes || i18n.t("global.notesEmpty")}
+                        </div>
+                      </div>
                       <div className={styles.shippingmethod}>
+                      <h3 className={styles.shippingmethod_title}>{i18n.t("account.shippingMethod")}</h3>
                         <ShippingMethods
                           classes={classesShippingMethod}
                           onErrorMsg={(msg) => toast.error(msg)}

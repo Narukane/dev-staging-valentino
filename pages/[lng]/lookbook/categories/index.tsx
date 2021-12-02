@@ -74,7 +74,7 @@ const LookbookCategory: FC<any> = ({
                     classes={classesEmptyComponent}
                     title={i18n.t("lookbook.isEmpty")}
                     logo={
-                      <img className={styles.lookbook__emptyIcon} src="/icon/emptyIcon.svg" />
+                      <img className={styles.lookbook__emptyIcon} src="/icon/emptyIconLookbook.svg" />
                     }
                   />
                 }

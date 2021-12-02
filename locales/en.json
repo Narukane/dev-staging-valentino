@@ -96,7 +96,8 @@
     "title": "Cart",
     "unknownSKU": "Unknown SKU",
     "unpublishedProduct": "Unpublish Product",
-    "writeNoteToSeller": "Write Note To Seller"
+    "writeNoteToSeller": "Write Note To Seller",
+    "notready": "Not ready yet ?"
   },
   "categories": {
     "categories": "Categories"
