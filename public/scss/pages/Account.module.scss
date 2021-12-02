@@ -520,6 +520,8 @@
     border: 1px solid rgba(66, 76, 90, 0.28);
     padding: 18px;
     border-radius: 4px;
+
+    & > progress::-webkit-progress-value {background-color: $color_base_red !important;}
   }
 
   &_accordion {
