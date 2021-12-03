@@ -1,5 +1,8 @@
-import { Head } from 'next/document';
-import { InlineStyle } from './InlineStyle';
+/* library Package */
+import { Head } from 'next/document'
+
+/* component */
+import { InlineStyle } from './InlineStyle'
 
 type DocumentFiles = {
   sharedFiles: string[];

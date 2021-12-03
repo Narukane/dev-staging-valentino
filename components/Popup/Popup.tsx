@@ -1,7 +1,13 @@
-import { useRef, FC } from 'react';
-import { X } from 'react-feather';
-import styles from 'public/scss/components/Popup.module.scss';
-import useOutsideClick from 'lib/useOutsideClick';
+/* library Package */
+import { useRef, FC } from 'react'
+import { X } from 'react-feather'
+
+/* library Template */
+import useOutsideClick from 'lib/useOutsideClick'
+
+/* styles */
+import styles from 'public/scss/components/Popup.module.scss'
+
 
 export type PopupPropsType = {
   withHeader: boolean,

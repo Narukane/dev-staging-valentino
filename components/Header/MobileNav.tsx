@@ -1,29 +1,36 @@
+/* library Package */
 import {
   FC,
   useState,
   useEffect
-} from "react";
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
+} from 'react'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import {
   Logo,
   useCart,
-  Widget,
-} from "@sirclo/nexus";
-import ProfileMenu from "./ProfileMenu";
-import Placeholder from "../Placeholder";
-import SideMenu from "../SideMenu/SideMenu";
-import MobileShortcut from "./MobileShortcut";
-import useWindowSize from "lib/useWindowSize";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
+} from '@sirclo/nexus'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import {
   Menu,
   ChevronDown,
   ChevronUp,
-} from 'react-feather';
-import styles from "public/scss/components/Header.module.scss";
+} from 'react-feather'
+const CollapsibleNav = dynamic(() => import('@sirclo/nexus').then((mod) => mod.CollapsibleNav))
 
-const CollapsibleNav = dynamic(() => import("@sirclo/nexus").then((mod) => mod.CollapsibleNav));
+/* library Template */
+import useWindowSize from 'lib/useWindowSize'
+
+/* component */
+import Placeholder from '../Placeholder'
+import SideMenu from '../SideMenu/SideMenu'
+import MobileShortcut from './MobileShortcut'
+import ProfileMenu from './ProfileMenu'
+
+/* styles */
+import styles from 'public/scss/components/Header.module.scss'
+
+
 const classesCollapsibleNav = {
   parentNavClassName: styles.menu,
   navItemClassName: styles.menu_item,

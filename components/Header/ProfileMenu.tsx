@@ -1,20 +1,23 @@
+/* library Package */
 import {
   FC,
   useState,
-} from "react";
-import Link from "next/link";
-import Router, { useRouter } from "next/router";
-import { useI18n } from "@sirclo/nexus";
-import dynamic from "next/dynamic";
+} from 'react'
+import Link from 'next/link'
+import Router, { useRouter } from 'next/router'
+import { useI18n } from '@sirclo/nexus'
+import dynamic from 'next/dynamic'
 import {
   User,
   ShoppingCart,
   Search as IconSearch
 } from 'react-feather';
+const PrivateComponent = dynamic(() => import('@sirclo/nexus').then((mod) => mod.PrivateComponent));
 
-const Popup = dynamic(() => import("../Popup/Popup"));
-const Search = dynamic(() => import("./Search"));
-const PrivateComponent = dynamic(() => import("@sirclo/nexus").then((mod) => mod.PrivateComponent));
+/* component */
+const Popup = dynamic(() => import('../Popup/Popup'));
+const Search = dynamic(() => import('./Search'));
+
 
 const ProfileMenu: FC<any> = ({
   lng,

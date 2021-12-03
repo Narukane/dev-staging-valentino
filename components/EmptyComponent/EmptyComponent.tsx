@@ -1,4 +1,5 @@
-import { FC } from "react";
+/* library Package */
+import { FC } from 'react'
 
 export type EmptyComponentPropsType = {
   classes: {

@@ -1,4 +1,5 @@
-import { FC } from "react";
+/* library Package */
+import { FC } from 'react'
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -12,8 +13,10 @@ import {
   EmailIcon,
   TelegramShareButton,
   TelegramIcon
-} from "react-share";
-import styles from "public/scss/components/SocialShare.module.scss";
+} from 'react-share'
+
+/* styles */
+import styles from 'public/scss/components/SocialShare.module.scss'
 
 type TypeSocialShare = {
   i18n?: any,

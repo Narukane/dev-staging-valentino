@@ -1,5 +1,8 @@
-import { useRouter } from "next/router";
-import styles from "public/scss/components/NotFound.module.scss";
+/* library Package */
+import { useRouter } from 'next/router'
+
+/* component */
+import styles from 'public/scss/components/NotFound.module.scss'
 
 const PageNotFound = ({
   i18n

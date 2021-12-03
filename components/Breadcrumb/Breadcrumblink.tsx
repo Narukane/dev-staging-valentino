@@ -1,5 +1,8 @@
-import { FC } from "react";
-import Link from 'next/link';
+/* library Package */
+import { FC } from 'react'
+import Link from 'next/link'
+
+/* styles */
 import styles from 'public/scss/components/Breadcrumbslink.module.scss'
 
 export type PageHeadingPropsType = {

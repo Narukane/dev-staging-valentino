@@ -1,5 +1,8 @@
-import { FC } from "react";
-import packageJson from "package.json";
+/* library Package */
+import { FC } from 'react'
+
+/* library Template */
+import packageJson from 'package.json'
 
 const Version: FC = () => {
   const IS_PROD = process.env.IS_PROD;

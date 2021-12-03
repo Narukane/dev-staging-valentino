@@ -23,7 +23,7 @@ const classesTrackerPage = {
   shipmentTrackButtonClassName: `${styles.track_shipmentTrackButton} ${styles.track_shipmentTrackButtonGuest}`,
 };
 
-const TrackerPage = ({ order_token }) => {
+const TrackerPage = () => {
   return (
     <ShipmentTracker
 

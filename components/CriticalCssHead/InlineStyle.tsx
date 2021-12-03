@@ -1,5 +1,6 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
+/* library Package */
+import { readFileSync } from 'fs'
+import { join } from 'path'
 
 export interface Props {
   assetPrefix?: string;

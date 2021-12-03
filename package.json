@@ -1,5 +1,5 @@
 {
-  "name": "template-uno",
+  "name": "template-valentino",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@brainhubeu/react-carousel": "^1.19.14",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.16",
     "@sirclo/nexus": "2.2.3",
     "bootstrap": "^4.5.0",
     "cookie": "^0.4.1",

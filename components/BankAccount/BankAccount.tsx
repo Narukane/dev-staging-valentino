@@ -1,16 +1,20 @@
 
-import { FC } from 'react';
-import { BanksAccount as BanksAccountList } from '@sirclo/nexus';
-import { toast } from "react-toastify";
-import Loader from "components/Loader/Loader";
-
-import stylesBanks from "public/scss/components/BanksAccount.module.scss";
-
+/* library Package */
+import { FC } from 'react'
+import { BanksAccount as BanksAccountList } from '@sirclo/nexus'
+import { toast } from 'react-toastify'
 import {
-    ChevronUp,
-    ChevronDown,
-    Copy
-  } from "react-feather";
+  ChevronUp,
+  ChevronDown,
+  Copy
+} from 'react-feather'
+
+/* component */
+import Loader from 'components/Loader/Loader'
+
+/* styles */
+import stylesBanks from 'public/scss/components/BanksAccount.module.scss'
+
 
 const BanksAccount: FC = () => {
 

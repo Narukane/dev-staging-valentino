@@ -1,4 +1,5 @@
-import { FC, ReactNode } from "react";
+/* library Package */
+import { FC, ReactNode } from 'react'
 
 const validateFlag = (data: string | boolean) => {
 	if (data === true || data === 'true')

@@ -1,6 +1,9 @@
-import { FC } from "react";
+/* library Package */
+import { FC } from 'react';
 import { X } from 'react-feather';
-import styles from "public/scss/components/SideMenu.module.scss";
+
+/* styles */
+import styles from 'public/scss/components/SideMenu.module.scss';
 
 type SideMenuPropsType = {
   withClose?: boolean

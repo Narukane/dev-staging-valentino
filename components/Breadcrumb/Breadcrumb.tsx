@@ -1,7 +1,10 @@
-import React, { FC } from "react";
-import Link from "next/link";
-import { useI18n } from "@sirclo/nexus";
-import styles from "public/scss/components/Breadcrumbs.module.scss";
+/* library Package */
+import React, { FC } from 'react'
+import Link from 'next/link'
+import { useI18n } from '@sirclo/nexus'
+
+/* styles */
+import styles from 'public/scss/components/Breadcrumbs.module.scss'
 
 type BreadcrumbPropsType = {
   currentStep: number;

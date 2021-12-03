@@ -1,11 +1,14 @@
+/* library Package */
 import {
   FC,
   useState,
   useEffect
-} from "react";
-import Head from "next/head";
-import Link from "next/link";
-import styles from "public/scss/pages/404page.module.scss";
+} from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
+
+/* styles */
+import styles from 'public/scss/pages/404page.module.scss'
 
 const ErrorComponent: FC<any> = ({
   i18n

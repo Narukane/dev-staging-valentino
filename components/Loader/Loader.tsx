@@ -1,5 +1,6 @@
-import { FC } from "react";
-import { useI18n } from "@sirclo/nexus"
+/* library Package */
+import { FC } from 'react'
+import { useI18n } from '@sirclo/nexus'
 
 type TypeLoader = {
   color?: string,

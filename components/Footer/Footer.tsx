@@ -1,14 +1,20 @@
-import { FC } from "react";
+/* library Package */
+import { FC } from 'react'
 import {
   NewsletterForm,
   isCopyrightAllowed,
   Widget,
   SocialMediaIcons,
   useI18n,
-} from "@sirclo/nexus";
-import styles from "public/scss/components/Footer.module.scss";
-import Version from "components/Version/Version";
-import { toast } from "react-toastify";
+} from '@sirclo/nexus'
+import { toast } from 'react-toastify'
+
+/* component */
+import Version from 'components/Version/Version'
+
+/* styles */
+import styles from 'public/scss/components/Footer.module.scss'
+
 
 const socialMediaIcons = {
   facebook: <img src="/images/facebook.svg" alt="facebook" />,

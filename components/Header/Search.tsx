@@ -1,14 +1,15 @@
+/* library Package */
 import {
   FC,
   useState,
   useEffect,
   useRef
-} from "react";
-import { useI18n } from "@sirclo/nexus";
+} from 'react'
+import { useI18n } from '@sirclo/nexus'
 import {
   Search as IconSearch,
   X as IconX
-} from 'react-feather';
+} from 'react-feather'
 
 export type SearchPropsType = {
   classes?: {

@@ -1,15 +1,19 @@
-import { FC, useState } from "react";
-import { InstagramFeed as InstaFeed } from "@sirclo/nexus";
-import Carousel from "@brainhubeu/react-carousel";
-import dynamic from "next/dynamic";
-import { useI18n } from "@sirclo/nexus";
-import styles from "public/scss/components/InstagramFeed.module.scss";
-import stylesPlacholder from "public/scss/components/Placeholder.module.scss";
-
-const Placeholder = dynamic(() => import("components/Placeholder"));
+/* library Package */
+import { FC, useState } from 'react'
+import { InstagramFeed as InstaFeed } from '@sirclo/nexus'
+import Carousel from '@brainhubeu/react-carousel'
+import dynamic from 'next/dynamic'
+import { useI18n } from '@sirclo/nexus'
 const InstagramQuickView = dynamic(() =>
-  import("@sirclo/nexus").then((mod) => mod.InstagramQuickView)
+  import('@sirclo/nexus').then((mod) => mod.InstagramQuickView)
 );
+
+/* component */
+const Placeholder = dynamic(() => import('components/Placeholder'));
+
+/* styles */
+import styles from 'public/scss/components/InstagramFeed.module.scss'
+import stylesPlacholder from 'public/scss/components/Placeholder.module.scss'
 
 const classesInstagramQuickView = {
   quickViewBackgroundClassName: styles.instagramFeed_quickviewBackground,

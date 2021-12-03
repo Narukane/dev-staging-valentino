@@ -1,12 +1,20 @@
-import { FC, useState } from "react";
-import { Logo, useCart, Widget, useLogout, Navigation } from "@sirclo/nexus";
-import ProfileMenu from "./ProfileMenu";
-import Placeholder from "../Placeholder";
-import useWindowSize from "lib/useWindowSize";
-import MobileNavButton from "./MobileNav";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
-import { X } from "react-feather";
-import styles from "public/scss/components/Header.module.scss";
+/* library Package */
+import { FC, useState } from 'react'
+import { Logo, useCart, Widget, useLogout, Navigation } from '@sirclo/nexus'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
+import { X } from 'react-feather'
+
+/* library Template */
+import useWindowSize from 'lib/useWindowSize'
+
+/* component */
+import ProfileMenu from './ProfileMenu'
+import Placeholder from '../Placeholder'
+import MobileNavButton from './MobileNav'
+
+
+/* styles */
+import styles from 'public/scss/components/Header.module.scss'
 
 const navClasses = {
   dropdownContainerClassName: styles.dropdown_container,
