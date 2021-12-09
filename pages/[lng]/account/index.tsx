@@ -48,7 +48,7 @@ const classesAccount = {
   myAccountContentClassName: styles.account_myAccount,
   myAccountBodyClassName: styles.account_myAccount_order,
   myAccountFieldClassName: styles.account_myAccount_order__list,
-  myAccountLabelClassName: `${styles.account_myAccount_order__listLabel} d-md-flex`,
+  myAccountLabelClassName: styles.account_myAccount_order__listLabel,
   myAccountValueClassName: `${styles.account_myAccount_order__listValue} d-md-flex`,
   loyaltyPointContainerClassName: styles.account_loyalty,
   /* order history classes */
@@ -62,7 +62,7 @@ const classesAccount = {
   editAccountClassName: styles.account_edit,
   inputContainerClassName: `${styles.sirclo_form_row} align-items-center`,
   inputLabelClassName: styles.account_edit__label,
-  inputClassName: `form-control ${styles.sirclo_form_input} ${styles.size_label}`,
+  inputClassName: `form-control ${styles.sirclo_form_input}`,
   changePasswordClassName: styles.account_changePassword,
   passwordContainerClassName: `d-flex align-items-center position-relative w-100`,
   passwordInputClassName: `form-control ${styles.sirclo_form_input}`,

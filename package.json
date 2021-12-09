@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@brainhubeu/react-carousel": "^1.19.14",
-    "@sirclo/nexus": "2.2.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@sirclo/nexus": "^2.5.3",
     "bootstrap": "^4.5.0",
     "cookie": "^0.4.1",
     "env-cmd": "^10.1.0",

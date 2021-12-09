@@ -12,6 +12,21 @@
       padding: 1rem;
     }
 
+    & > select
+    {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: transparent;
+      background-image: url("data:image/svg+xml;utf8,<svg width='24' height='24' xmlns='http://www.w3.org/2000/svg' fill-rule='evenodd' clip-rule='evenodd'><path d='M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z'/></svg>");
+      background-repeat: no-repeat;
+      background-position-x: 98%;
+      background-position-y: 10px;
+      border: 1px solid #dfdfdf;
+      border-radius: 2px;
+      margin-right: 2rem;
+      background-size: 12px;
+    }
+
     & > div
     {
       position: relative;

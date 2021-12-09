@@ -109,7 +109,7 @@ const ProfileMenu: FC<any> = ({
         <Popup
           withHeader
           setPopup={toogleSearch}
-          mobileFull
+          mobileFull={false}
           classPopopBody
           popupTitle={i18n.t("header.searchProduct")}
         >

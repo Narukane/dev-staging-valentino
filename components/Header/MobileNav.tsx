@@ -137,54 +137,6 @@ const MobileNavButton: FC<any> = ({ lng }) => {
                 </>
               }
             />
-            {/* <ul className={styles.menu}>
-              <li className={styles.menu_item}>
-                <span className={`${openLanguage && styles.menu_itemSelected} ${styles.menu_itemTitle}`}>
-                  <span className={styles.menu_itemTitleLabel}>{i18n.t("header.language")}</span>
-                  <span
-                    className={styles.icon_down}
-                    onClick={() => setOpenLanguage(!openLanguage)}
-                  >
-                    {openLanguage ?
-                      <ChevronUp className={styles.icon_down_mobile__svg} /> :
-                      <ChevronDown className={styles.icon_down_mobile__svg} />
-                    }
-                  </span>
-                </span>
-                {openLanguage &&
-                  <LanguageSelector
-                    classes={classesLanguageSelector}
-                    type="list"
-                    lng={`${lng}`}
-                    separator=""
-                    withCurrency={false}
-                  />
-                }
-              </li>
-            </ul> */}
-            {/* <ul className={styles.menu}>
-              <li className={styles.menu_item}>
-                <span className={`${openCurrency && styles.menu_itemSelected} ${styles.menu_itemTitle}`}>
-                  <span className={styles.menu_itemTitleLabel}>{i18n.t("header.currency")}</span>
-                  <span
-                    className={styles.icon_down}
-                    onClick={() => setOpenCurrency(!openCurrency)}
-                  >
-                    {openCurrency ?
-                      <ChevronUp className={styles.icon_down_mobile__svg} /> :
-                      <ChevronDown className={styles.icon_down_mobile__svg} />
-                    }
-                  </span>
-                </span>
-                {openCurrency &&
-                  <CurrencySelector
-                    classes={classesCurrencySelector}
-                    type="list"
-                    separator=""
-                  />
-                }
-              </li>
-            </ul> */}
           </SideMenu>
         }
       <MobileShortcut lng={lng} />

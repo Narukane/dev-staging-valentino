@@ -23,12 +23,10 @@ const classesTrackerPage = {
   shipmentTrackButtonClassName: `${styles.track_shipmentTrackButton} ${styles.track_shipmentTrackButtonGuest}`,
 };
 
-const TrackerPage = () => {
+const TrackerPage = ({ order_token }) => {
   return (
     <ShipmentTracker
-
-      awbNumber={"IN-SB-2-C2VTGFMAA2XUME"}
-      shippingProvider="GRAB"
+      token={order_token}
       iconTracker={
         <img
           className="mr-2"
@@ -38,9 +36,9 @@ const TrackerPage = () => {
       }
       classes={classesTrackerPage}
     />
-
   );
 };
+
 
 export async function getServerSideProps({ params, req }) {
   const brand = await useBrand(req);
